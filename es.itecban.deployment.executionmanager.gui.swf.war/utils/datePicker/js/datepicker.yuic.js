@@ -1,3 +1,18 @@
+#-------------------------------------------------------------------------------
+# Copyright 2014 Indra
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#-------------------------------------------------------------------------------
 var datePickerController=(function datePickerController(){var languageInfo=navigator.language?navigator.language.toLowerCase().replace(/-[a-z]+$/,""):navigator.userLanguage?navigator.userLanguage.toLowerCase().replace(/-[a-z]+$/,""):"en",datePickers={},uniqueId=0,weeksInYearCache={},localeImport=false,nbsp=String.fromCharCode(160),nodrag=false,buttonTabIndex=true,returnLocaleDate=false,splitAppend=["-dd","-mm"],cellFormat="d-sp-F-sp-Y",titleFormat="F-sp-d-cc-sp-Y",formatParts=["placeholder","sp-F-sp-Y"],formatMasks=["Y-sl-m-sl-d","m-sl-d-sl-Y","d-sl-m-sl-Y","Y-ds-m-ds-d","m-ds-d-ds-Y","d-ds-m-ds-Y"];void function(){var scriptFiles=document.getElementsByTagName("head")[0].getElementsByTagName("script"),scriptInner=scriptFiles[scriptFiles.length-1].innerHTML.replace(/[\n\r\s\t]+/g," ").replace(/^\s+/,"").replace(/\s+$/,""),json=parseJSON(scriptInner);if(typeof json==="object"&&!("err" in json)){affectJSON(json)}if(typeof(fdLocale)!="object"){var loc=scriptFiles[scriptFiles.length-1].src.substr(0,scriptFiles[scriptFiles.length-1].src.lastIndexOf("/"))+"/lang/"+languageInfo+".js",script=document.createElement("script");script.type="text/javascript";script.src=loc;script.setAttribute("charset","utf-8");
 /*@cc_on
                         /*@if(@_win32)
