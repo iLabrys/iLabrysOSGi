@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+		xmlns:osgi="http://www.springframework.org/schema/osgi"		
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/webflow-config
+			http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+			http://www.springframework.org/schema/osgi 
+			http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	
+	<!-- Core Services references -->
+	<bean id="planCreationManager" class="es.itecban.deployment.executionmanager.gui.swf.service.PlanCreationManager">
+		<property name="environmentManager" ref="environmentManager"/>
+		<property name="common" ref="commonCreationManager"/>
+	</bean>	
+	
+	<bean id="commonCreationManager" class="es.itecban.deployment.executionmanager.gui.swf.service.CommonCreationManager">
+		<property name="repoManager" ref="repositoryManager"/>
+		<property name="envManager" ref="environmentManager"/>
+		<property name="resolver" ref="resolver"/>
+		<property name="planManager" ref="planManager"/>
+	</bean>	
+	
+	<bean id="updatePlanCreationManager" class="es.itecban.deployment.executionmanager.gui.swf.service.UpdatePlanCreationManager">
+		<property name="envManager" ref="environmentManager"/>
+		<property name="common" ref="commonCreationManager"/>
+	</bean>
+	
+	<bean id="DeletePlanCreationManager" class="es.itecban.deployment.executionmanager.gui.swf.service.DeletePlanCreationManager">
+		<property name="envManager" ref="environmentManager"/>
+		<property name="common" ref="commonCreationManager"/>
+	</bean>
+	
+	<bean id="generalPlanCreationManager" class="es.itecban.deployment.executionmanager.gui.swf.service.GeneralPlanCreationManager"/>
+	
+	<bean name="environmentGraphBuilderFactory" class="es.itecban.deployment.executionmanager.EnvironmentGraphBuilderFactoryImpl">
+	   <property name="repoManager" ref="repositoryManager"/>
+	   <property name="envManager" ref="environmentManager"/>
+	</bean>
+	
+	<bean id="planLaunchManager" class="es.itecban.deployment.executionmanager.gui.swf.service.PlanLaunchManager">
+		<property name="planExecutor" ref="scheduleManager"/>
+		<property name="planManager" ref="planManager"/>
+		<property name="reportManager" ref="reportManager"/>
+	</bean>	
+	
+	<bean id="planSearchManager" class="es.itecban.deployment.executionmanager.gui.swf.service.PlanSearchManager">
+		<property name="planManager" ref="planManager"/>
+		<property name="environmentManager" ref="environmentManager"/>
+	</bean>
+		
+	<bean id="planReportSearchManager" class="es.itecban.deployment.executionmanager.gui.swf.service.PlanReportSearchManager">
+		<property name="reportManager" ref="reportManager"/>
+		<property name="environmentManager" ref="environmentManager"/>		
+	</bean>
+
+	<osgi:reference  id="repositoryManager"  interface="es.itecban.deployment.repository.services.core.RepositoryManagerCore"/>
+	<osgi:reference  id="resolver"           interface="es.itecban.deployment.repository.services.core.ResolverCore"/>
+	<osgi:reference  id="unitLocator"        interface="es.itecban.deployment.repository.services.core.UnitLocatorCore"/>
+	<osgi:reference  id="environmentManager" interface="es.itecban.deployment.environmentmanager.services.core.EnvironmentManagerCore"/>	
+	<!--<osgi:reference  id="planBuilderFactory" interface="es.itecban.deployment.executionmanager.services.PlanBuilderFactory"/>-->
+	<osgi:reference  id="scheduleManager"    interface="es.itecban.deployment.executionmanager.services.PlanExecutor"/>
+    <osgi:reference  id="planManager"        interface="es.itecban.deployment.executionmanager.services.PlanManager"/>
+    <osgi:reference  id="reportManager"      interface="es.itecban.deployment.environmentmanager.services.ReportManager"/>
+    <osgi:reference  id="taxonomyHelper"	 interface="es.itecban.deployment.resource.taxonomy.TaxonomyValidator" />
+	 <!-- Core Services references -->
+		
+	
+	
+	<!-- Spring Web Flow Configuration -->
+	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
+		<webflow:flow-location id="createInstallPlan" path="/WEB-INF/flows/createInstallPlan-flow.xml" />
+		<webflow:flow-location id="createUpdatePlan" path="/WEB-INF/flows/createUpdatePlan-flow.xml" />
+		<webflow:flow-location id="createDeletePlan" path="/WEB-INF/flows/createDeletePlan-flow.xml" />
+		<webflow:flow-location id="launchPlan" path="/WEB-INF/flows/launchPlan-flow.xml" />
+		<webflow:flow-location id="searchPlan" path="/WEB-INF/flows/planSearch-flow.xml" />
+		<webflow:flow-location id="reportSearch" path="/WEB-INF/flows/reportSearch-flow.xml" />
+		<webflow:flow-location id="generalPlan" path="/WEB-INF/flows/generalPlan-flow.xml" />
+	</webflow:flow-registry>
+	
+	<webflow:flow-executor id="flowExecutor">
+		<webflow:flow-execution-listeners>
+			<webflow:listener ref="securityFlowExecutionListener" />
+		</webflow:flow-execution-listeners>
+	</webflow:flow-executor>
+		
+	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"/>
+		
+	<bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers" ref="viewResolver"/>
+	</bean>
+	<!-- Spring Web Flow Configuration -->
+
+	<!-- viewResolver: Resolver de vistas HTML. En este caso, será Apache Tiles  -->
+	<!-- 
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</bean>
+	-->
+
+	<!-- tilesConfigurer: Configuración de Tiles  -->
+	<!-- 
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/swf-tiles-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>	
+	
+	
+	<bean id="specialViewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
+	
+	<bean id="filenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+	
+	<!-- SimpleUrlHandlerMapping: Mapeo url-controlador -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    	<property name="mappings">
+			<props>
+				<prop key="/*Plan">flowController</prop>			
+				<prop key="/reportSearch">flowController</prop>
+				<!-- 
+				<prop key="/swf/login.htm">loginController</prop>
+				<prop key="/swf/logout.htm">logoutController</prop>
+				<prop key="/swf/error.htm">errorController</prop>
+				 -->
+				<prop key="/reports.htm">reportController</prop>
+				
+				<prop key="/unitInverseDependencies.htm">inverseDependenciesController</prop>
+				<prop key="/*.htm">filenameViewController</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<!-- SimpleUrlHandlerMapping: Mapeo url-controlador  -->
+
+	<!-- flowController: Controlador MVC para Spring Web Flow  -->
+	<bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+		<property name="flowExecutor" ref="flowExecutor" />
+  	</bean>
+  	
+  	<!-- flowController: Controlador MVC para Spring Web Flow  -->
+  	
+  	<bean id="loginController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="viewResolver" />
+	</bean>
+	
+	<bean id="logoutController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="viewResolver" />
+	</bean>
+	
+	<bean id="errorController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="error" />
+	</bean>
+	
+	<bean id="reportController"
+		class="es.itecban.deployment.executionmanager.web.controller.ReportController">
+		<property name="service" ref="reportManager" />
+	</bean>
+	
+	<bean id="inverseDependenciesController"
+		class="es.itecban.deployment.executionmanager.web.controller.UnitInverseDependenciesController">
+		<property name="repoManager" ref="repositoryManager"/>
+		<property name="envManager" ref="environmentManager"/>
+		<property name="factory" ref="environmentGraphBuilderFactory"/>
+	</bean>
+	
+	<bean id="messageSource" 
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+	  
+	<bean name="report" class="es.itecban.deployment.executionmanager.web.view.ReportView" />
+	<bean name="reportActivity" class="es.itecban.deployment.executionmanager.web.view.ReportActivityView" />
+	
+	<!-- Listener for security in the flows and views -->
+	<bean id="securityFlowExecutionListener"
+		class="org.springframework.webflow.security.SecurityFlowExecutionListener" />
+		
+		
+	<!-- bean para las uris de cabecera -->		
+	<bean id="header" class="es.itecban.deployment.utils.beans.HeaderBean">
+        <property name="executionUri">
+        	<value>${execution.Uri}</value>
+        </property>
+        <property name="environmentUri">
+        	<value>${environment.Uri}</value>
+        </property>	
+        <property name="repositoryUri">
+        	<value>${repository.Uri}</value>
+        </property>	
+        <property name="artifactUri">
+        	<value>${artifact.Uri}</value>
+        </property>	        	
+	</bean>	
+
+	<!-- beans de configuracion de propiedades para las uris de cabecera -->	  	
+  	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  		<!-- Indicates whether unresolved placeholders should be ignored -->
+    	<property name="ignoreUnresolvablePlaceholders" value="true"/>
+	</bean>
+	   
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- When configured in this mode, any value specified as a system property to the JVM 
+			will override any values set in properties files -->
+    	<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    	<!-- When ignoreResourceNotFound is set to true, Spring will ignore resources that don’t exist -->
+    	<property name="ignoreResourceNotFound" value="true"/>
+    	<property name="locations">
+        <list>
+        	<!-- propiedades de configuración de las uris de cabecera contenidas en el war -->
+            <value>classpath:/etc/connection.properties</value>
+            <!-- propiedades de configuración de las uris de cabeceras ubicadas fuera del war -->
+            <value>${config}</value>
+        </list>
+    	</property>    	
+	</bean>
+  	<!-- beans de configuracion de propiedades para las uris de cabecera -->
+  	
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="planSearch">
+
+	<view-state id="planSearch" view="advancedPlanSearch">
+		<on-render>
+			<evaluate expression="planSearchManager.getEnvironmentList(flowRequestContext)" result="flowScope.environments"/>
+		</on-render>
+		
+		<transition on="advancedSearch" to="planList">
+			<evaluate expression="planSearchManager.findPlansPaginated(flowRequestContext)" result="flowScope.availableDeploymentPlans"/>
+		</transition>
+	</view-state>
+	
+	<view-state id="advancedPlanSearch" view="advancedPlanSearch">
+		<transition on="advancedSearch" to="planList">
+			<!-- <evaluate expression="planSearchManager.findPlansByFilter(flowRequestContext)"/>  -->
+			<evaluate expression="planSearchManager.findPlansPaginated(flowRequestContext)" result="flowScope.availableDeploymentPlans"/>
+		</transition>
+	</view-state>
+	
+	<!-- TODO -->
+	<view-state id="planList" view="planList">
+		<transition on="showPlan" to="showPlan">
+			<evaluate expression="planSearchManager.showDescriptor(flowRequestContext)"/>
+			<evaluate expression="planSearchManager.reviewPlanJSON(flowRequestContext)"/>
+		</transition>
+		<transition on="paginateList" to="planList">
+			<evaluate expression="planSearchManager.findPlansPaginated(flowRequestContext)" result="flowScope.availableDeploymentPlans"/>
+		</transition>
+		<transition on="back" to="planSearch"/>
+	</view-state>
+	
+	<view-state id="showPlan" view="showPlan">
+		<transition on="launch" to="planReady"/>
+		<transition on="back" to="planSearch"/>
+	</view-state>
+	
+	<!-- Temporary state. Will be substituted for subflow call -->
+	<end-state id="end">
+	</end-state>
+	
+	<subflow-state id="planReady" subflow="launchPlan">
+		<input name="planNameUniq" value="flowScope.planNameUniq" required="true"/>
+		<transition on="end" to="planSearch"/>
+		<!-- this transition is valid or is it obsolete? -->
+		<transition on="planLaunchCancelled" to="pickTargetNodes"/>
+	</subflow-state>
+</flow>

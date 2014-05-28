@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<osgi:reference id="em"
+		interface="es.itecban.deployment.environmentmanager.services.EnvironmentManager" />
+		
+	<osgi:reference id="rs"
+		interface="es.itecban.deployment.repository.services.core.RepositoryManagerCore" />
+		
+	<osgi:reference id="unitLocator"
+		interface="es.itecban.deployment.repository.services.core.UnitLocatorCore" />
+		
+	<osgi:reference id="cp"
+		interface="es.itecban.deployment.environmentmanager.services.ConfigurationProvider" />
+		
+	<osgi:reference id="im"
+		interface="es.itecban.deployment.environmentmanager.services.InterceptorManager" />
+		
+	<osgi:list id="eels"
+		interface="es.itecban.deployment.environmentmanager.services.ExecutionEventListener"
+		cardinality="0..N" />
+		
+	<osgi:list id="vals"
+		interface="es.itecban.deployment.environmentmanager.services.PlanExecutionValidator"
+		cardinality="0..N" />
+		
+	<bean id="executorService"
+		class="es.itecban.deployment.environment.runner.pvm.impl.PvmExecutorService">
+		<property name="validators" ref="vals" />
+		<property name="listeners" ref="eels" />
+		<property name="env" ref="em" />
+		<property name="rep" ref="rs" />
+		<property name="ul" ref="unitLocator" />
+		<property name="conf" ref="cp"/>
+		<property name="intercept" ref="im" />
+		<property name="ctx" ref="bundleContext" />
+	</bean>
+	
+	<osgi:service ref="executorService"
+		interface="es.itecban.deployment.environmentmanager.services.ExecutorService" />
+	<osgi:service  ref="executorService"
+	    interface="es.itecban.deployment.environmentmanager.services.core.ExecutorServiceCore"/>
+	
+</beans>

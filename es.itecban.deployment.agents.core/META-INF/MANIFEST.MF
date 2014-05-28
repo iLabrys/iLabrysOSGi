@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Monitoring Agents Base Classes
+Bundle-SymbolicName: es.itecban.deployment.agents.core
+Bundle-Version: 1.0.0
+Bundle-Activator: es.itecban.deployment.agents.Activator
+Import-Package: es.itecban.deployment.model.deployment.target,
+ org.osgi.framework
+Export-Package: es.itecban.deployment.agents

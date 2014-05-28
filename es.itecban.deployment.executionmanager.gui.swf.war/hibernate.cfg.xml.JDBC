@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="java:comp/env/itecbanPBO/hibernate/SessionFactory">
+        <property name="connection.datasource">JDBC-ITECBANPBO-JNDI</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.connection.pool_size">10</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <property name="show_sql">false</property>
+        <property name="format_sql">true</property>
+
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TipoMovimiento.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/Cliente.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/Cuenta.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/MovimientoCuenta.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TipoCuenta.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TipoPermiso.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TipoPoliza.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/Poliza.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/Credito.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TipoCredito.hbm.xml"/>
+        <mapping resource="es/upm/dit/itecban/ad/pbo/dao/hibernate/TareaEnCurso.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

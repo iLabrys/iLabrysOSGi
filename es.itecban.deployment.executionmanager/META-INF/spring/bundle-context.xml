@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+ 
+  <!-- This bundle registers a PlanBuilderFactory service, which provides
+  all the required functionality for creating a plan -->
+<!--  <osgi:service ref="planBuilderFactory" interface="es.itecban.deployment.executionmanager.services.PlanBuilderFactory"/>-->
+  
+    <!-- This bundle registers a EnvironmentGraohBuilderFactory service, which provides
+  all the required functionality for creating a graph depicting the impact of an update -->
+  <osgi:service ref="environmentGraphBuilderFactory" interface="es.itecban.deployment.executionmanager.services.EnvironmentGraphBuilderFactory"/>
+  
+  
+  <!--<bean name="planBuilderFactory" class="es.itecban.deployment.executionmanager.PlanBuilderFactoryImpl"/>-->
+  
+  <!-- This bundle registers a ScheduleManager service, which provides
+  all the required functionality for launching and scheduling a DeploymentPlanType -->
+  <osgi:service ref="planExecutor" interface="es.itecban.deployment.executionmanager.services.PlanExecutor"/>
+  
+  <bean name="planExecutor" class="es.itecban.deployment.executionmanager.DefaultPlanExecutor">
+  	<property name="executorService" ref="executorManager"/>
+  	<property name="reportManager" ref="reportManager"/>  
+  	<property name="ramManager" ref="ramManager"/> 
+  	<!-- used only in case ramManager asset status checking is done -->
+  	<property name="configurationProvider" ref="configurationProvider"/> 
+  </bean>
+  
+  <bean name="environmentGraphBuilderFactory" class="es.itecban.deployment.executionmanager.EnvironmentGraphBuilderFactoryImpl">
+    <property name="repoManager" ref="repositoryManager"/>
+    <property name="envManager" ref="environmentManager"/>
+  </bean>
+  
+  <!-- OSGi references -->
+  <osgi:reference  id="repositoryManager" interface="es.itecban.deployment.repository.services.core.RepositoryManagerCore"/>
+  <osgi:reference  id="resolver" interface="es.itecban.deployment.repository.services.core.ResolverCore"/>
+  <osgi:reference  id="unitLocator" interface="es.itecban.deployment.repository.services.core.UnitLocatorCore"/>
+  <osgi:reference  id="environmentManager" interface="es.itecban.deployment.environmentmanager.services.core.EnvironmentManagerCore"/>
+  <osgi:reference  id="executorManager" interface="es.itecban.deployment.environmentmanager.services.core.ExecutorServiceCore"/>
+  <osgi:reference  id="planManager" interface="es.itecban.deployment.executionmanager.services.PlanManager"/>
+  <osgi:reference  id="reportManager" interface="es.itecban.deployment.environmentmanager.services.ReportManager"/>
+  <!-- Reference to the RAM service. This service is an extension and therefore it is optional -->
+  <osgi:reference  id="ramManager" interface="es.itecban.ilabrys.ram.services.IlabrysRAMUtils" timeout="1000" cardinality="0..1"/>
+  <osgi:reference  id="configurationProvider" interface="es.itecban.deployment.environmentmanager.services.ConfigurationProvider" timeout="1000" cardinality="0..1"/>  
+    
+</beans>

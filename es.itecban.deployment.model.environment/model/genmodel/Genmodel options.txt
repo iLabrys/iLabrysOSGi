@@ -1,0 +1,4 @@
+Set the following to true:
+- Suppress Genmodel Annotations
+- Suppress Notifications
+- Suppress EMF Types

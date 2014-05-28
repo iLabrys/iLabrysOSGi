@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="decideNewPlan">
+ 
+ 	<on-start>		
+		<evaluate expression="generalPlanCreationManager.initialize(flowRequestContext)" result="flowScope.supportedGoals"/>
+	</on-start>
+		
+	<!-- Initial welcome screen -->
+	<view-state id="decideNewPlan" view="decidePlan">		
+		<transition on="selectOperation" to="selectOperationDecision">
+		<evaluate expression="generalPlanCreationManager.decideOperation(flowRequestContext)" result="flowScope.selectedOperation"/>
+		</transition>	
+	</view-state>
+	
+	<decision-state id="selectOperationDecision">
+				<if test="flowScope.selectedOperation == 0 " then="install"/>	
+				<if test="flowScope.selectedOperation == 1 " then="uninstall"/>
+				<if test="flowScope.selectedOperation == 2 " then="update"/>
+	</decision-state>
+	
+	<subflow-state id="install" subflow="createInstallPlan">	
+		<transition on="end" to="decideNewPlan"/>	
+	</subflow-state>
+	
+	<subflow-state id="uninstall" subflow="createDeletePlan">	
+		<transition on="end" to="decideNewPlan"/>
+	</subflow-state>
+	
+	<subflow-state id="update" subflow="createUpdatePlan">	
+		<transition on="end" to="decideNewPlan"/>
+	</subflow-state>
+	
+</flow>

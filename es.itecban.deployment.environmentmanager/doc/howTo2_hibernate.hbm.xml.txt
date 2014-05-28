@@ -1,0 +1,37 @@
+Generar el archivo de mapeo:
+- es necesario realizar seleccionando unit.ecore, target.ecore y ConfigurationProperties.ecore y utilizar la herramienta de Teneo
+
+Modificaciones necesarias a realizar en el archivo de mapeo una vez ha sido generado mediante TENEO:
+- cambiar todos los lazy=true a lazy=false (al final se explica como afinar esto)
+- cambiar el id de deploymenttargettype para que lo sea el url al que apunta
+    	* <id name="name" column="name" type="java.lang.String"/>
+- cambiar las lineas:
+ 	* <type name="org.eclipse.emf.teneo.hibernate.mapping.ALGOQUENORECUEDOENumUserType">
+        	<param name="eclassifier">StatusType</param>
+                <param name="epackage">http://model.dit.upm.es/DeploymentTarget</param>
+          </type>
+        * por : <type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+                    <param name="enumClass">es.itecban.deployment.model.deployment.target.StatusType</param>
+                </type>
+- cambiar el tipo String de PropertyType (cambio value) a text para que no de error de dataTruncation
+- cambiar el tipo String de configurationproperties properties por text para que no de error de dataTruncation
+- eliminar el mapeo de las siguientes propiedades:
+	* ConstraintsType
+	* DependenciesType
+	* DependencyType
+	* DeploymentUnitType
+	* ExportedResourcesType
+	* PackageType
+	* ProviderType
+	* RequiredResourceType
+	* UnitRepositoriesType
+
+Afinar prestaciones del archivo de mapeo (estando ya todos los lazy=false):
+- DeploymentTargetType: lazy="true"y en la relación con NodesType lazy="no-proxy". 
+	NodesType: lazy="true" y en la lista que le relaciona a NodeType lazy="true"
+	De esta forma no carga por defecto la colección de nodos.
+- ContainerType: en todas las relaciones poner lazy="no-proxy"
+	en ContainerTypesType lazy="true" y en su lista con ContainerTypeType	
+	De esta forma no carga las listas que hay por debajo de contenedor
+	igual con las otras tres listas de ContainerType
+- 

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:du="http://model.deployment.itecban.es/DeploymentUnit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://model.deployment.itecban.es/DeploymentUnit">
+	<xsd:element name="deploymentUnit" type="du:DeploymentUnitType">
+		<xsd:annotation>
+			<xsd:documentation>
+				This is the root of the deployment unit descriptor. Each
+				deployment unit MUST include a description with the set
+				of provided resources. Optionally the description MAY
+				impose a set of constraints on the deployment target and
+				include dependencies with other deployment units
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="resource" type="du:ResourceType"/>
+	<xsd:element name="requiredResource" type="du:RequiredResourceType"/>
+	<xsd:element name="provider" type="du:ProviderType"/>
+	<xsd:element name="dependency" type="du:DependencyType"/>
+	<xsd:element name="localityConstraint" type="du:LocalityConstraintType"/>
+	<xsd:element name="package" type="du:PackageType"/>
+	<xsd:element name="property" type="du:PropertyType"/>
+	<xsd:element name="requiredResourceProperty" type="du:RequiredResourcePropertyType"/>
+	<xsd:element name="propertyKind" type="du:PropertyKindType"/>
+	
+	<xsd:complexType name="ResourceType">
+        <xsd:annotation>
+        	<xsd:documentation>
+        		Resources are capabilities offered by the deployment
+        		unit to other deployment units.
+        	</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Name that identifies the resource. Resources are
+						optionaly qualified with a version attribute,
+						but they must be tagged under a type. Resource
+						types allows differentiating among resources
+						with the same name. As regard the name it is
+						strongly recommended to use naming patterns that
+						help to avoid name clashing, a good practice is
+						to to use the reverse-domain naming strategy,
+						such as the one used to name Java packages, e.g.
+						es.itecban.service.TransferenceManager
+
+					</xsd:documentation>
+				</xsd:annotation>
+      </xsd:element>
+			<xsd:element minOccurs="0" name="version" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A version is a unique String resource attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="types">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="1" name="type" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="resourceProperties">
+                <xsd:annotation>
+                	<xsd:documentation>
+                		Properties can be used to refine the resource
+                		description further than the basic
+                		name-version-type tuple.
+                	</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="resourceProperty" type="du:PropertyType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PropertyType">
+        <xsd:annotation>
+        	<xsd:documentation>
+        		A property is anything that can be described with a name
+        		and a value. Reverse-domain naming is recommended to
+        		name properties. The type of the resource should be used
+        		as a prefix of the name.
+        	</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="value" type="xsd:anyURI"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RequiredResourcePropertyType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="value" type="xsd:anyURI"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="kind" type="du:PropertyKindType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="PropertyKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="QUANTITY"/>
+			<xsd:enumeration value="CAPACITY"/>
+			<xsd:enumeration value="MINIMUM"/>
+			<xsd:enumeration value="MAXIMUM"/>
+			<xsd:enumeration value="ATTRIBUTE"/>
+			<xsd:enumeration value="SELECTION"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="PackageType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Name of the container file, for example:
+						axis-bundle.jar
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="version" type="xsd:string">
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="type" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Type of package of this deployment unit. A
+						taxonomy of valid packaging formats is defined
+						in a external system.
+
+						For this version the supported packaging formats
+						are: es.itecban.packaging.jar,
+						es.itecban.packaging.osgi,
+						es.itecban.packaging.ear,
+						es.itecban.packaging.war,
+						es.itecban.packaging.rar,
+						es.itecban.packaging.zip,
+						es.itecban.packaging.sca
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="LocalityConstraintType">
+        <xsd:annotation>
+        	<xsd:documentation>
+        		The locality constraint type can be used to determine
+        		the distribution of dependent deployment units.
+        	</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SAMENODE"/>
+			<xsd:enumeration value="SAMENODESAMEPROCESS"/>
+			<xsd:enumeration value="ANYNODE"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="DependencyType">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="id" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						This is a locally unique identifier for the
+						dependency. This identifier is used in the
+						dependency expression to locally identify
+						dependency items
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="locality" type="du:LocalityConstraintType">
+				<xsd:annotation>
+					<xsd:documentation>
+						Some deployment units must share a same runtime
+						environment, others can communicate remotely.
+						This element allows defining the type of
+						distribution supported.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="description" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						An optional human readable description of the
+						deployment unit contents
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="requiredResource" type="du:RequiredResourceType">
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="requiredPackage" type="du:PackageType">
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProviderType">
+        <xsd:annotation>
+        	<xsd:documentation>
+        		The provider type can be used to include information
+        		related to the actor responsible for the deployment
+        		unit.
+        	</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:int">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="homeUrl" type="xsd:anyURI">
+				<xsd:annotation>
+					<xsd:documentation>
+						URL to the service provider
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RequiredResourceType">
+		<xsd:annotation>
+			<xsd:documentation>
+				Required resources are used to describe dependencies
+				between deployment units.The required resources are
+				modeled using this data type. The main difference is the
+				type of versioning information. In this case version
+				ranges are accepted. Use the intervals syntax to add
+				this information, e.g. (1.0.0,4.4.10] means that
+				resources with a version greater than 1.0.0 and smaller
+				or equal to 4.4.10 are accepted
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="version" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A version is a unique String resource attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="type" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="requiredResourceProperties">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="property" type="du:RequiredResourcePropertyType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+	<xsd:complexType name="DeploymentUnitType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Deployment unit name. In general, it should
+						match the package name, but a shorter name can
+						be used if required.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="version" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Version tag of the deployment unit.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="description" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						An optional human readable description of the
+						deployment unit contents.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="provider" type="du:ProviderType">
+				<xsd:annotation>
+					<xsd:documentation>
+						An optional reference to the deployment unit
+						provider.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="package" type="du:PackageType">
+				<xsd:annotation>
+					<xsd:documentation>
+						File that contains the resources/artifacts to
+						which this deployment unit description pertains
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="exportedResources">
+				<xsd:annotation>
+					<xsd:documentation>
+						A collection of the logical exported resources
+						by the deployment unit
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="exportedResource" type="du:ResourceType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="dependencies">
+				<xsd:annotation>
+					<xsd:documentation>
+						List of dependencies to other deployment units
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="dependencyExpression" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>
+									This is a boolean expression that
+									accepts parenthesis and makes
+									references to dependency items by
+									id. Syntax: - The boolean operators
+									are written as: AND, OR, XOR and NOT
+									- Parentheses can be used to
+									establish precedence rules. All
+									these expressions will be
+									interpreted as Component &amp;
+									(dependencyExpression), for example:
+									A AND (B XOR D)
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="dependency" type="du:DependencyType">
+							<xsd:annotation>
+								<xsd:documentation>
+									Collection of dependencies related
+									to this deployment unit. A
+									deployment unit can manifest
+									dependencies either to other
+									deployment units or to specific
+									required resources.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="constraints">
+				<xsd:annotation>
+					<xsd:documentation>
+						Section that incudes contraints on the execution
+						environment, either to the containing runtime,
+						or to the underlying operating system and
+						hardware
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="constraint" type="du:RequiredResourceType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="unitRepositories">
+				<xsd:annotation>
+					<xsd:documentation>
+						List of repositories where this deployment unit
+						should be found
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="repository" type="xsd:anyURI"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

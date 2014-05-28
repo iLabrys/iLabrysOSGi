@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<!--
+		Security Configuration to integrate ITECBAN Security Services
+	-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd
+                            http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+                            
+    <!-- Reference to the authentication manager service -->
+	<osgi:reference id="authenticationManager"
+		interface="org.springframework.security.providers.AuthenticationProvider" />
+		
+	<bean id="authenticationManagerDelegate"
+		class="es.itecban.deployment.security.client.ws.AuthenticationManager">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<security:custom-authentication-provider />
+	</bean>
+	
+	<bean id="filterChainProxy" class="org.springframework.security.util.FilterChainProxy">
+		<security:filter-chain-map path-type="ant">
+			<security:filter-chain pattern="/**"
+				filters="httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter, anonymousProcessingFilter, exceptionTranslationFilter, filterInvocationInterceptor" />
+		</security:filter-chain-map>
+	</bean>
+	
+	<alias name="filterChainProxy" alias="springSecurityFilterChain" />			
+	
+	<bean id="httpSessionContextIntegrationFilter"
+		class="org.springframework.security.context.HttpSessionContextIntegrationFilter">
+		<property name="allowSessionCreation" value="true" />
+		<property name="forceEagerSessionCreation" value="true" />
+	</bean>
+	
+	<bean id="authenticationProcessingFilter"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManagerDelegate" />
+		<property name="authenticationFailureUrl" value="/login.htm?error=login.error.1" />		
+		<property name="alwaysUseDefaultTargetUrl" value="true" />
+		<property name="defaultTargetUrl" value="/swf/generalPlan" />
+		<property name="filterProcessesUrl" value="/j_spring_security_check" />
+	</bean>
+	
+	<bean id="anonymousProcessingFilter"
+    class="org.springframework.security.providers.anonymous.AnonymousProcessingFilter">
+  		<property name="key" value="foobar"/>
+  		<property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS"/>
+	</bean>
+
+	<bean id="anonymousAuthenticationProvider"
+    	class="org.springframework.security.providers.anonymous.AnonymousAuthenticationProvider">
+  		<property name="key" value="foobar"/>
+	</bean>	
+	
+	<bean id="filterInvocationInterceptor"
+		class="org.springframework.security.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManagerDelegate" />
+		<property name="accessDecisionManager">
+			<bean class="org.springframework.security.vote.AffirmativeBased">
+				<property name="allowIfAllAbstainDecisions" value="false" />
+				<property name="decisionVoters">
+					<list>
+						<bean class="org.springframework.security.vote.RoleVoter" />
+						<bean class="org.springframework.security.vote.AuthenticatedVoter" />
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="objectDefinitionSource">
+			<security:filter-invocation-definition-source>
+				<security:intercept-url pattern="/" access="ROLE_ANONYMOUS"/>				
+				<security:intercept-url pattern="/login.htm*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/logout.htm" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/files/*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/img/*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/css/*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/js/*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/j_spring*" access="ROLE_EXEC_USER,ROLE_EXEC_ADMIN" />
+				<security:intercept-url pattern="/swf/create*" access="ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/swf/general*" access="ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/swf/search*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/swf/report*" access="ROLE_ANONYMOUS,ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/swf/*.htm" access="ROLE_EXEC_USER,ROLE_EXEC_ADMIN"/>
+				<security:intercept-url pattern="/swf/*" access="ROLE_EXEC_ADMIN"/>
+			</security:filter-invocation-definition-source>
+		</property>
+	</bean>
+	
+	<bean id="logoutFilter" class="org.springframework.security.ui.logout.LogoutFilter">
+		<constructor-arg value="/logout.htm" />
+		<constructor-arg>
+			<list>
+				<bean
+					class="org.springframework.security.ui.logout.SecurityContextLogoutHandler">
+					<property name="invalidateHttpSession" value="true" />
+				</bean>
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/j_spring_security_logout" />
+	</bean>
+	<bean id="authenticationEntryPoint"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl" value="/login.htm" />
+	</bean>
+	<bean id="exceptionTranslationFilter"
+		class="org.springframework.security.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<property name="accessDeniedHandler">
+			<bean class="org.springframework.security.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/error.htm?error=error.access_denied" />
+			</bean>
+		</property>
+	</bean>
+</beans>

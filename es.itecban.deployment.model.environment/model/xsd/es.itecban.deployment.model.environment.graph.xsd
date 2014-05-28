@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://model.deployment.itecban.es/EnvironmentGraph"
+	xmlns:eg="http://model.deployment.itecban.es/EnvironmentGraph"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore"
+		schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd" />
+		
+	<xsd:element name="environmentGraph" type="eg:EnvironmentGraph" />
+	<xsd:element name="node" type="eg:Node" />
+	<xsd:element name="Dependency" type="eg:Dependency" />
+	<xsd:element name="Cause" type="eg:Cause" />
+
+	<xsd:complexType name="EnvironmentGraph">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="1" name="node" type="eg:Node" />
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="dependencies" type="eg:Dependency" />
+		</xsd:sequence>
+		<xsd:attribute name="origins" ecore:reference="eg:Node" type="xsd:IDREFS" />
+	</xsd:complexType>
+
+	<xsd:complexType name="Dependency">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded" type="eg:Cause" name="cause" />
+		</xsd:sequence>
+		<xsd:attribute name="locality" type="xsd:string" />
+		<xsd:attribute name="destination" ecore:reference="eg:Node"
+			type="xsd:IDREF" />
+		<xsd:attribute name="source" ecore:reference="eg:Node"
+			type="xsd:IDREF" />
+		<xsd:attribute name="id" type="xsd:ID" use="required" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="Node">
+		<xsd:attribute name="id" type="xsd:ID" use="required" />
+		<xsd:attribute name="unitName" type="xsd:string" use="required" />
+		<xsd:attribute name="unitVersion" type="xsd:string" use="required" />
+		<xsd:attribute name="containerName" type="xsd:string" use="required" />
+		<xsd:attribute name="nodeName" type="xsd:string" use="required" />
+		<xsd:attribute name="isRequiredBy" ecore:reference="eg:Dependency" type="xsd:IDREFS" />
+		<xsd:attribute name="Dependencies" ecore:reference="eg:Dependency" type="xsd:IDREFS" />
+	</xsd:complexType>
+
+	<xsd:complexType name="Cause">
+		<xsd:attribute name="name" type="xsd:string" />
+		<xsd:attribute name="version" type="xsd:string" />
+		<xsd:attribute name="type" type="xsd:string" />
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://model.deployment.itecban.es/ValidationResult"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:vr="http://model.deployment.itecban.es/ValidationResult">
+	
+
+	<xsd:element name="result" type="vr:PlanValidationResult"/>
+	
+
+
+<!--	<xsd:complexType name="PlanValidationResult">-->
+<!--        -->
+<!--        <xsd:sequence>-->
+<!--			<xsd:element name="executionId" type="xsd:string" maxOccurs="1"-->
+<!--				minOccurs="1" />-->
+<!--			<xsd:element name="problems" type="vr:PlanValidationProblem" maxOccurs="unbounded"-->
+<!--				minOccurs="0" />-->
+<!--		</xsd:sequence>-->
+<!--	</xsd:complexType>-->
+
+	<xsd:complexType name="PlanValidationResult">
+		<xsd:sequence>
+			<xsd:element name="result" type="vr:ResultKind" maxOccurs="1"
+				minOccurs="1" />
+			<xsd:element name="message" type="xsd:string" maxOccurs="1"
+				minOccurs="1" />
+			</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="ResultKind">
+	    <xsd:restriction base="xsd:string">
+	    	<xsd:enumeration value="OK"/>
+			<xsd:enumeration value="ABORT" />
+			<xsd:enumeration value="WARNING" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	</xsd:schema>

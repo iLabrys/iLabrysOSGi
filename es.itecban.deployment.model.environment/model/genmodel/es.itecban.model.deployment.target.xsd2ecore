@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#/ ../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#/"
+    outputs="target.ecore#/ unit.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2/types;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//TypesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2/types;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//TypesType/type"/>
+  </nested>
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=25"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyType;XSDComplexTypeDefinition=1"
+      outputs="unit.ecore#//PropertyType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//PropertyType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//PropertyType/value"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/resourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//ResourcePropertiesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/resourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//ResourcePropertiesType/resourceProperty"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition"
+      outputs="unit.ecore#//ResourceType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//ResourceType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//ResourceType/version"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//ResourceType/types"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ResourceType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="unit.ecore#//ResourceType/resourceProperties"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=2/bridgeResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//BridgeResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=2/bridgeResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//BridgeResourcesType/bridgeResource"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2"
+      outputs="target.ecore#//BridgeType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//BridgeType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//BridgeType/label"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//BridgeType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//BridgeType/bridgeResources"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//bridge;XSDElementDeclaration=2"
+      outputs="target.ecore#//DocumentRoot/bridge"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerTypeType;XSDComplexTypeDefinition=7"
+      outputs="target.ecore#//ContainerTypeType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerTypeType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ContainerTypeType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerTypeType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//ContainerTypeType/version"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=1/containerTypes;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//ContainerTypesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=1/containerTypes;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ContainerTypesType/containerType"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//SupportedPackageType;XSDComplexTypeDefinition=1"
+      outputs="target.ecore#//SupportedPackageType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//SupportedPackageType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//SupportedPackageType/version"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//SupportedPackageType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//SupportedPackageType/type"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=2/supportedPackages;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//SupportedPackagesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=2/supportedPackages;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//SupportedPackagesType/containerPackage"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=2/runtimeResourceTypes;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//RuntimeResourceTypesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=2/runtimeResourceTypes;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeResourceTypesType/type"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3/runtimeResourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//RuntimeResourcePropertiesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3/runtimeResourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeResourcePropertiesType/resourceProperty"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//StatusType;XSDSimpleTypeDefinition"
+      outputs="target.ecore#//StatusType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//StatusType;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="target.ecore#//StatusType/ACTIVE"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//StatusType;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="target.ecore#//StatusType/INACTIVE"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//StatusType;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="target.ecore#//StatusType/INSTALLED"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6"
+      outputs="target.ecore#//RuntimeResourceType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeResourceType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//RuntimeResourceType/version"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//RuntimeResourceType/runtimeResourceTypes"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//RuntimeResourceType/runtimeResourceProperties"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="target.ecore#//RuntimeResourceType/status"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=3/containerResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//ContainerResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=3/containerResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ContainerResourcesType/containerResource"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=4/containerProperties;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//ContainerPropertiesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=4/containerProperties;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ContainerPropertiesType/containerProperty"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=3/runtimeResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//RuntimeResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=3/runtimeResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeResourcesType/resource"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8"
+      outputs="target.ecore#//RuntimeUnitType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeUnitType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//RuntimeUnitType/version"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//RuntimeUnitType/status"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//RuntimeUnitType;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//RuntimeUnitType/runtimeResources"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=5/runtimeUnits;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//RuntimeUnitsType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=5/runtimeUnits;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//RuntimeUnitsType/unit"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5"
+      outputs="target.ecore#//ContainerType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ContainerType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//ContainerType/containerTypes"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//ContainerType/supportedPackages"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//ContainerType/containerResources"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="target.ecore#//ContainerType/containerProperties"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//ContainerType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="target.ecore#//ContainerType/runtimeUnits"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//container;XSDElementDeclaration=4"
+      outputs="target.ecore#//DocumentRoot/container"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//containerType;XSDElementDeclaration=5"
+      outputs="target.ecore#//DocumentRoot/containerType"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//LocalityConstraintType;XSDSimpleTypeDefinition=1"
+      outputs="unit.ecore#//LocalityConstraintType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//LocalityConstraintType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="unit.ecore#//LocalityConstraintType/SAMENODE"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//LocalityConstraintType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="unit.ecore#//LocalityConstraintType/SAMENODESAMEPROCESS"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//LocalityConstraintType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="unit.ecore#//LocalityConstraintType/ANYNODE"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition"
+      outputs="unit.ecore#//PropertyKindType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="unit.ecore#//PropertyKindType/QUANTITY"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="unit.ecore#//PropertyKindType/CAPACITY"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="unit.ecore#//PropertyKindType/MINIMUM"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=3"
+        outputs="unit.ecore#//PropertyKindType/MAXIMUM"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=4"
+        outputs="unit.ecore#//PropertyKindType/ATTRIBUTE"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PropertyKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=5"
+        outputs="unit.ecore#//PropertyKindType/SELECTION"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourcePropertyType;XSDComplexTypeDefinition=2"
+      outputs="unit.ecore#//RequiredResourcePropertyType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourcePropertyType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//RequiredResourcePropertyType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourcePropertyType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//RequiredResourcePropertyType/value"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourcePropertyType;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//RequiredResourcePropertyType/kind"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3/requiredResourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//RequiredResourcePropertiesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3/requiredResourceProperties;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//RequiredResourcePropertiesType/property"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6"
+      outputs="unit.ecore#//RequiredResourceType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//RequiredResourceType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//RequiredResourceType/version"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//RequiredResourceType/type"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//RequiredResourceType;XSDComplexTypeDefinition=6/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="unit.ecore#//RequiredResourceType/requiredResourceProperties"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PackageType;XSDComplexTypeDefinition=3"
+      outputs="unit.ecore#//PackageType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PackageType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//PackageType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PackageType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//PackageType/version"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//PackageType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//PackageType/type"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4"
+      outputs="unit.ecore#//DependencyType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//DependencyType/id"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//DependencyType/locality"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//DependencyType/description"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="unit.ecore#//DependencyType/requiredResource"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DependencyType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="unit.ecore#//DependencyType/requiredPackage"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//dependency;XSDElementDeclaration=4"
+      outputs="unit.ecore#//DocumentRoot/dependency"/>
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=44"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ProviderType;XSDComplexTypeDefinition=5"
+      outputs="unit.ecore#//ProviderType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ProviderType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//ProviderType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ProviderType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//ProviderType/id"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//ProviderType;XSDComplexTypeDefinition=5/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//ProviderType/homeUrl"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=5/exportedResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//ExportedResourcesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=5/exportedResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//ExportedResourcesType/exportedResource"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=6/dependencies;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//DependenciesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=6/dependencies;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//DependenciesType/dependencyExpression"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=6/dependencies;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//DependenciesType/dependency"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=7/constraints;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//ConstraintsType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=7/constraints;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//ConstraintsType/constraint"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=8/unitRepositories;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="unit.ecore#//UnitRepositoriesType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=8/unitRepositories;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//UnitRepositoriesType/repository"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7"
+      outputs="unit.ecore#//DeploymentUnitType">
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="unit.ecore#//DeploymentUnitType/name"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="unit.ecore#//DeploymentUnitType/version"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="unit.ecore#//DeploymentUnitType/description"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="unit.ecore#//DeploymentUnitType/provider"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="unit.ecore#//DeploymentUnitType/package"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="unit.ecore#//DeploymentUnitType/exportedResources"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="unit.ecore#//DeploymentUnitType/dependencies"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=7"
+        outputs="unit.ecore#//DeploymentUnitType/constraints"/>
+    <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//DeploymentUnitType;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle=8"
+        outputs="unit.ecore#//DeploymentUnitType/unitRepositories"/>
+  </nested>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//deploymentUnit;XSDElementDeclaration"
+      outputs="unit.ecore#//DocumentRoot/deploymentUnit"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2/nodeResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//NodeResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2/nodeResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//NodeResourcesType/nodeResource"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/nodeContainers;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//NodeContainersType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3/nodeContainers;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//NodeContainersType/nodeContainer"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4/nodeProperties;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//NodePropertiesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4/nodeProperties;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//NodePropertiesType/nodeProperty"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition"
+      outputs="target.ecore#//NodeType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//NodeType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//NodeType/label"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//NodeType/nodeResources"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//NodeType/nodeContainers"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//NodeType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="target.ecore#//NodeType/nodeProperties"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2/nodes;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//NodesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2/nodes;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//NodesType/node"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/bridges;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//BridgesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3/bridges;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//BridgesType/bridge"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2/interconnectResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//InterconnectResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2/interconnectResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//InterconnectResourcesType/interconnectResource"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3/connectedNodes;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//ConnectedNodesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3/connectedNodes;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ConnectedNodesType/nodes"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4/connectedBridges;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//ConnectedBridgesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4/connectedBridges;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//ConnectedBridgesType/bridge"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3"
+      outputs="target.ecore#//InterconnectType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//InterconnectType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//InterconnectType/label"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//InterconnectType/interconnectResources"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//InterconnectType/connectedNodes"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//InterconnectType;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="target.ecore#//InterconnectType/connectedBridges"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/interconnects;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//InterconnectsType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4/interconnects;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//InterconnectsType/interconnect"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=5/sharedResources;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="target.ecore#//SharedResourcesType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=5/sharedResources;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//SharedResourcesType/sharedResource"/>
+  </nested>
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//dateTime;XSDSimpleTypeDefinition=15"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//DateTime"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4"
+      outputs="target.ecore#//DeploymentTargetType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="target.ecore#//DeploymentTargetType/name"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="target.ecore#//DeploymentTargetType/uUID"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="target.ecore#//DeploymentTargetType/nodes"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="target.ecore#//DeploymentTargetType/bridges"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="target.ecore#//DeploymentTargetType/interconnects"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="target.ecore#//DeploymentTargetType/sharedResources"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//DeploymentTargetType;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="target.ecore#//DeploymentTargetType/timestamp"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//domain;XSDElementDeclaration"
+      outputs="target.ecore#//DocumentRoot/domain"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//interconnect;XSDElementDeclaration=3"
+      outputs="target.ecore#//DocumentRoot/interconnect"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//localityConstraint;XSDElementDeclaration=5"
+      outputs="unit.ecore#//DocumentRoot/localityConstraint"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//node;XSDElementDeclaration=1"
+      outputs="target.ecore#//DocumentRoot/node"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//package;XSDElementDeclaration=6"
+      outputs="unit.ecore#//DocumentRoot/package"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//property;XSDElementDeclaration=7"
+      outputs="unit.ecore#//DocumentRoot/property"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//propertyKind;XSDElementDeclaration=9"
+      outputs="unit.ecore#//DocumentRoot/propertyKind"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//provider;XSDElementDeclaration=3"
+      outputs="unit.ecore#//DocumentRoot/provider"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//requiredResource;XSDElementDeclaration=2"
+      outputs="unit.ecore#//DocumentRoot/requiredResource"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//requiredResourceProperty;XSDElementDeclaration=8"
+      outputs="unit.ecore#//DocumentRoot/requiredResourceProperty"/>
+  <nested inputs="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd#//resource;XSDElementDeclaration=1"
+      outputs="unit.ecore#//DocumentRoot/resource"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//runtimeResource;XSDElementDeclaration=8"
+      outputs="target.ecore#//DocumentRoot/runtimeResource"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//runtimeUnit;XSDElementDeclaration=7"
+      outputs="target.ecore#//DocumentRoot/runtimeUnit"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//status;XSDElementDeclaration=9"
+      outputs="target.ecore#//DocumentRoot/status"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.target.xsd#//supportedPackage;XSDElementDeclaration=6"
+      outputs="target.ecore#//DocumentRoot/supportedPackage"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

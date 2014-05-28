@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.itecban.deployment.model.configuration/src"
+    modelPluginID="es.itecban.deployment.model.configuration" modelName="Es.itecban.deployment.model"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>../xsd/es.itecban.deployment.model.configuration.xsd</foreignModel>
+  <genPackages prefix="Configuration" basePackage="es.itecban.deployment.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="configuration.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuration.ecore#//IsMandatory">
+      <genEnumLiterals ecoreEnumLiteral="configuration.ecore#//IsMandatory/OPTIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="configuration.ecore#//IsMandatory/MANDATORY"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="configuration.ecore#//IsMandatoryObject"/>
+    <genClasses ecoreClass="configuration.ecore#//ConfigurationContainerType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//ConfigurationContainerType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//ConfigurationContainerType/configurationFiles"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//ConfigurationFilesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//ConfigurationFilesType/configurationFile"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//ConfigurationFileType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//ConfigurationFileType/fileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//ConfigurationFileType/configFile"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//ConfigurationPropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//ConfigurationPropertiesType/environmentProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//ContainersType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//ContainersType/container"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/configurationFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/environment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//DocumentRoot/environmentProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//EnvironmentPropertyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//EnvironmentPropertyType/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//EnvironmentPropertyType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//EnvironmentPropertyType/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//EnvironmentPropertyType/mandatory"/>
+    </genClasses>
+    <genClasses ecoreClass="configuration.ecore#//EnvironmentType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuration.ecore#//EnvironmentType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//EnvironmentType/containers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuration.ecore#//EnvironmentType/configurationProperties"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ExecutionManager WS Core
+Bundle-SymbolicName: es.itecban.deployment.executionmanager.core.ws
+Bundle-Version: 1.0.0
+Import-Package: es.itecban.deployment.model.deployment.plan,
+ es.itecban.deployment.model.deployment.plan.util,
+ es.itecban.deployment.model.deployment.target,
+ es.itecban.deployment.model.deployment.target.util,
+ es.itecban.deployment.model.deployment.unit,
+ es.itecban.deployment.model.deployment.unit.util
+Require-Bundle: org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi
+Export-Package: es.itecban.deployment.executionmanager.ws.services
+

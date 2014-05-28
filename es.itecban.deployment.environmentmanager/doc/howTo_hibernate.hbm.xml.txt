@@ -1,0 +1,23 @@
+Una vez autogenerado el archivo de mapeo gracias a los tres ecores de la 
+carpeta "modelproperties" es necesario hacer una serie de cambios a mano. 
+Estos cambios son los siguientes:
+
+* Cambiar todos los lazy=true a lazy=false. Es drástico pero rápido, hay 
+operaciones que realizan sobre objetos de la base de datos una vez cerrada
+la sesión.
+
+* cambiar el id de deploymenttargettype para que lo sea el url al que apunta
+	o <id name="name" column="name" type="java.lang.String"/>
+	o para ello borrar el id que tiene, el campo correspondiente a name y 
+		pegar la línea de arriba.
+* cambiar las lineas:
+	o <type name="org.eclipse.emf.teneo.hibernate.mapping.ALGOQUENORECUEDOENumUserType">
+     	 <param name="eclassifier">StatusType</param>
+         <param name="epackage">http://model.dit.upm.es/DeploymentTarget</param>
+      </type>
+	o por: 
+		<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+        	<param name="enumClass">es.itecban.deployment.model.deployment.target.StatusType</param>
+        </type>
+* cambiar el tipo String de PropertyType a text para que no de error de dataTruncation
+* sustituir el tipo de mapeo de DttConfigurationProperties properties a serializable

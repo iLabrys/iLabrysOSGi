@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#/"
+    outputs="es.itecban.deployment.model.deployment.plan.report.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="bundleentry://546/cache/www.w3.org/2001/XMLSchema.xsd#//dateTime;XSDSimpleTypeDefinition=15"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//DateTime"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/OK"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=1"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/TIMEOUT"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=2"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/CONNECTIONPROBLEM"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=3"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/CONFIGURATIONPROBLEM"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=4"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/UNAVAILABLEUNITS"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityResultKindType;XSDSimpleTypeDefinition=1/XSDEnumerationFacet=5"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/UNKNOWN"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/activityId"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/startTime"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/endTime"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/description"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/resultCode"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/result"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ActivityExecReportType;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/technicalActivityExecReport"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//activity;XSDElementDeclaration=1"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/activity"/>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//PlanResultKindType;XSDSimpleTypeDefinition"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//PlanResultKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/OK"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//PlanResultKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/FAILED"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//PlanResultKindType;XSDSimpleTypeDefinition/XSDEnumerationFacet=2"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/ROLLBACKED"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=9/activitiesExecutionReport;XSDElementDeclaration/XSDComplexTypeDefinition"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivitiesExecutionReportType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=9/activitiesExecutionReport;XSDElementDeclaration/XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivitiesExecutionReportType/activityExecutionReport"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType">
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/planId"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/startTime"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/endTime"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/creationUserId"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/launcherUserId"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/environment"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/technicalExecutionReport"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=7"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/result"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=8"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/message"/>
+    <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//ExecutionReportType;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=9"
+        outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/activitiesExecutionReport"/>
+  </nested>
+  <nested inputs="../xsd/es.itecban.deployment.model.deployment.plan.report.xsd#//executionReport;XSDElementDeclaration"
+      outputs="es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/executionReport"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

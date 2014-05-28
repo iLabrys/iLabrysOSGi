@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+  http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+
+	<!-- Expone -->
+	<osgi:service  ref="planManager" interface="es.itecban.deployment.executionmanager.services.PlanManager"/>
+	<osgi:service ref="databaseManager" interface="es.itecban.deployment.executionmanager.database.DatabaseManager"/>
+
+ 	<!-- Consume -->
+ 	<osgi:reference  id="databaseManager" interface="es.itecban.deployment.executionmanager.database.DatabaseManager"/>
+
+	<bean name="databaseManager" class="es.itecban.deployment.executionmanager.database.manager.DatabaseManagerImpl" init-method="initDB">
+  		<property name="propertiesResource" value="hibernate.properties"/>
+  		<property name="externalConfig" value="false"/>
+  		<property name="externalPropertiesURI" value="file:///aplicaciones/Ilabrys/ilabrys-executionmanager/configuration/execution/hibernate.properties"/>
+  	</bean>
+
+	<bean name="planManager" class="es.itecban.deployment.executionmanager.manager.PlanManagerImpl" init-method="initSessionFactory">
+  		<property name="DBManager" ref="databaseManager" />
+  		<property name="queryProvider" value="es.itecban.deployment.executionmanager.queryprovider.oracle.OracleQueryProvider"/>
+  	</bean>
+</beans>

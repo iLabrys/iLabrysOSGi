@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Repository Roles Fragment
+Bundle-SymbolicName: es.itecban.deployment.security.repository.roles
+Bundle-Version: 1.0.0
+Bundle-Vendor: ITECBAN
+Fragment-Host: es.itecban.deployment.security.client;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

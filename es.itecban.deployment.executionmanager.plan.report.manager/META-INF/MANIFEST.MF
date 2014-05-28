@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Execution Report Plans
+Bundle-SymbolicName: es.itecban.deployment.executionmanager.plan.report.manager
+Bundle-Version: 1.0.0
+Bundle-Vendor: ITECBAN
+Import-Package: es.itecban.deployment.environmentmanager.services,
+ es.itecban.deployment.executionmanager.database,
+ es.itecban.deployment.executionmanager.manager.queryprovider,
+ es.itecban.deployment.executionmanager.queryprovider.oracle,
+ es.itecban.deployment.model.deployment.plan.report,
+ es.itecban.deployment.model.deployment.plan.report.impl,
+ es.itecban.deployment.model.deployment.plan.report.util,
+ org.springframework.core.io
+Require-Bundle: org.eclipse.emf.ecore.xmi,
+ org.eclipse.xsd,
+ es.itecban.deployment.hibernate.libraries;bundle-version="1.0.0",
+ org.eclipse.emf.teneo.hibernate;bundle-version="1.0.0";visibility:=reexport
+Export-Package: es.itecban.deployment.executionmanager.manager.report.manager

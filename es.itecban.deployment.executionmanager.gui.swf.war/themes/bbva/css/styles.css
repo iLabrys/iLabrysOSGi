@@ -1,0 +1,312 @@
+body{
+	margin: 0 auto;
+	text-align: center;
+	width: 800px;
+	background-color: #E4F1FF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#container{
+	width: 800px;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+#header{
+	margin-bottom: 0px;
+}
+
+#headerMenu{
+	background-color: #4E80C0;
+}
+
+#headerMenu ul{
+	margin: 0px;
+	padding: 5px;
+}
+
+#headerMenu ul li{
+	list-style: none;
+	list-style-image: none;
+	display: inline;
+	padding: 5px 25px 5px 5px;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+
+#headerMenu ul li.on{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#headerMenu ul li a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#headerMenu ul li a:hover{
+	text-decoration: underline;
+}
+
+#header #logo{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	background: url(../img/bbva_logo.gif) no-repeat left;
+	text-align: right;
+}
+
+#navigation{
+	background-color: #FFFFFF;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	border-bottom: 4px solid #4E80C0;
+}
+
+#navigation ul{
+	margin: 0px;
+	padding: 3px 0px 3px 0px;
+}
+
+#navigation ul li{
+	list-style: none;
+	list-style-image: none;
+	display: inline;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 3px;
+	margin-left: 0px;
+	padding: 0px;
+}
+
+
+#navigation ul li a{
+	padding: 3px 10px 3px 10px;	
+	background-color: #C3DDFD;
+	color: #4E80C0;
+	text-decoration: none;
+}
+
+#navigation ul li.on a{
+	padding: 3px 10px 3px 10px;
+	background-color: #4E80C0;
+	color: #FFFFFF;;
+}
+
+#navigation ul li a:hover{
+	padding: 3px 10px 3px 10px;
+	background-color: #4E80C0;
+	color: #FFFFFF;;
+}
+
+#bodyContent{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 0px;
+	
+}
+
+#bodyContent #column{
+	width: 190px;
+	background-color: #4E80C0;
+	float: left;
+	margin-top: 0px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+#bodyContent #column div{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#bodyContent #column p{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#bodyContent #column a{
+	color: #FFFFFF;
+}
+
+#bodyContent #column #msgBox p.errorCode{
+	background: url(../img/bullet.gif) no-repeat top left;
+	padding-left: 20px;
+	font-weight: bold;
+}
+
+#bodyContent #column #msgBox p{
+	padding-left: 20px;
+}
+
+
+
+#bodyContent #content{
+	margin-left: 190px;
+	margin-top: 0px;
+	padding: 10px 20px 10px 20px;
+	font-size: 12px;
+}
+
+#bodyContent #content legend{
+	color: #6699CC;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+#bodyContent #content fieldset{
+	border: 1px solid #6699CC;
+	background-color: #E4F1FF;
+}
+
+#bodyContent #content label{
+	font-size: 12px;
+}
+
+#bodyContent #content .bt{
+	text-align: right;
+}
+
+#bodyContent #content .bt input{
+	border: 1px solid #6699CC;
+	color: #4E80C0;
+	font-weight: bold;
+	background-color: #C3DDFD;
+}
+
+#bodyContent #content input.border{
+	border: 1px solid #6699CC;	
+}
+
+#bodyContent #content h1{
+	color: #6699CC;
+	font-size: 24px;
+	margin-top: 5px;
+}
+
+#bodyContent #content p{
+	margin: 0px;
+	padding-top:5px;
+	padding-bottom:10px;
+	font-size: 12px;
+}
+
+#bodyContent #content a{
+	color: #4E80C0;
+}
+
+
+#footer{
+	background-color: #4E80C0;
+	clear: left;
+	margin: 0px;
+	text-align: center;
+	padding: 5px;
+}
+
+#footer ul{
+	margin: 0px;
+}
+
+#footer ul li{
+	list-style: none;
+	list-style-image: none;
+	display: inline;
+	padding: 5px 25px 5px 25px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#footer ul li a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#footer ul li a:hover{
+	text-decoration: underline;
+}
+
+/* ************************************ */
+/* Internal styles for some pages       */
+/* ************************************ */
+
+#content div.blockBox{
+	background-color: #E4F1FF;
+	border: 1px solid #4E80C0;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 10px;
+}
+
+#content div.blockBox p.title a{
+	color: #4E80C0;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#content div.blockBox p.title a:hover{
+	text-decoration: underline;
+}
+
+#content div.blockBox > div{
+	display:none;
+	padding: 5px 10px 5px 10px;
+}
+
+#content div.blockBox > div p{
+	padding-top:0px;
+	padding-bottom:5px;
+}
+
+/* environmentConfiguratio.jsp */
+#content table#lineas{
+	margin-bottom: 15px;
+}
+
+#content table#lineas th{
+	font-weight:bold;
+	background-color: #4E80C0;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+#content table#lineas td{
+	background-color: #E4F1FF;
+	font-size: 11px;
+}
+
+/* environmentDetail.jsp */
+#bodyContent #content .btLeft{float: left; margin-top: 10px;}
+#bodyContent #content .btRight{float: right; margin-top: 10px;}
+#bodyContent #content .btLeft input, #bodyContent #content .btRight input{
+	border: 1px solid #6699CC;
+	color: #4E80C0;
+	font-weight: bold;
+	background-color: #C3DDFD;
+}
+
+
+.blockBox div .nodeContainer{
+	display:block;
+	border: 1px dashed #4E80C0;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.blockBox div .nodeContainer .btConfig{
+	text-align:right;
+}
+.blockBox div .nodeContainer .btConfig input.bt{
+	border: 1px solid #6699CC;
+	color: #4E80C0;
+	font-weight: bold;
+	background-color: #C3DDFD;
+}
+
+
+
+
+
+
+
+

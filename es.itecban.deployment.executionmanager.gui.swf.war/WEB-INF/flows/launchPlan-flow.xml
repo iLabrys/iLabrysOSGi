@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" 
+	xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" 
+	ns0:schemaLocation="http://www.springframework.org/schema/webflow 
+		http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+		start-state="launchPlan">
+ 
+ 	<secured attributes="ROLE_EXEC_ADMIN" />
+ 
+ 	<input name="planNameUniq" value="flowScope.planNameUniq" required="true"/>
+		
+	<view-state id="launchPlan" view="prepareToLaunch">
+		<transition on="proceed" to="launchingPlan"/>
+		<transition on="cancel" to="end"/>
+	</view-state>
+	
+	<action-state id="launchingPlan">
+		<evaluate expression="planLaunchManager.launchPlan(flowRequestContext, flowScope.planNameUniq)" result="flowScope.executionReport"/>
+		<transition on-exception="java.lang.Exception" to="error"/>
+		<transition to="executionReport"/>
+	</action-state>	
+		
+	<view-state id="executionReport" view="executionReport">
+		<transition on="OK" to="end"/>
+		<transition on="showReport" to="showReport">
+			<evaluate expression="planReportSearchManager.getLastReportOfPlan(flowRequestContext, flowScope.planNameUniq)" />
+		</transition>
+		<transition on-exception="java.lang.Exception" to="error"/>
+	</view-state>
+	
+	<!-- If there are errors in the launching process -->
+	<view-state id="errorWithLaunch" view="errorWithLaunch">
+		<!-- Button that cancels the launch -->
+		<transition on="back" to="end">
+		</transition>
+	</view-state>
+	
+	<view-state id="showReport" view="showReport">		
+		<transition on="back" to="end"/>
+		<transition on="launchAntiPlan" to="launchAntiPlan"/> 
+	</view-state>
+	
+	<action-state id="launchAntiPlan">
+		<!--<evaluate expression="planLaunchManager.launchAntiPlan(flowRequestContext)" result="flowScope.antiPlanExecutionReport"/>-->
+		<evaluate expression="planLaunchManager.launchAntiPlan(flowRequestContext)" result="flowScope.executionReport"/>		
+		<!--<evaluate expression="planLaunchManager.isExecutedOK(flowScope.executionReport)" result="flowScope.isExecutedOK"/>-->
+		<transition on-exception="java.lang.Exception" to="error"/>
+		<transition to="executionReport"/>		
+	</action-state>	
+	
+	<view-state id="error" view="error">
+		<transition on="back" to="end"/>
+		<on-exit>
+			<evaluate expression="planLaunchManager.cleanErrorVariables(flowRequestContext)"/>
+		</on-exit>
+	</view-state>
+		
+	<end-state id="end"/>
+	
+</flow>

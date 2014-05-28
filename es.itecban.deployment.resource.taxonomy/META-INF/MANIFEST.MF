@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Resource Taxonomy
+Bundle-SymbolicName: es.itecban.deployment.resource.taxonomy
+Bundle-Version: 1.0.0
+Bundle-Vendor: ITECBAN
+Import-Package: org.osgi.framework, org.springframework.core.io
+Bundle-ClassPath: .
+Export-Package: es.itecban.deployment.resource.taxonomy

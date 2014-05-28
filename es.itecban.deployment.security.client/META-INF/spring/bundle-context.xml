@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+  <!--
+  This bean can be used as an authentication provider for ITECBAN security service
+  and also as a test authentication provider for demos or development 
+   -->
+ 
+  <bean id="authenticationManager" class="es.itecban.deployment.security.client.ws.LogonWS" init-method="init">
+  		<property name="defaultUri" value="http://1.65.233.100:9082/WsItecbanSecurity/LogonWsService"/>  		    
+        <!-- <property name="defaultUri" value="http://10.65.233.100:9082/WsItecbanSecurity/LogonWsService"/> -->
+        <property name="rm" ref="rm"/>
+        <property name="enableSecurity" value="true"/>                                 
+  </bean>
+  
+  <bean id="rm" class="es.itecban.deployment.security.client.ws.RoleManager">
+  		<!--
+        List of pre-authenticated users. Just for testing purposes with enabled security
+        if security is enabled at a production environment then this property must be commented out
+           -->
+  	<property name="propertiesResource" value="etc/security-config.properties"/>
+  </bean>
+  
+  <osgi:service  ref="authenticationManager">
+ 	<osgi:interfaces>
+ 		<value>org.springframework.security.providers.AuthenticationProvider</value> 		
+ 	</osgi:interfaces>
+  </osgi:service>
+  
+  <!-- 
+  <bean id="clientTest" class="es.itecban.deployment.security.client.ws.LogonWSTest" init-method="init">
+  	<property name="sc" ref="authenticationManager"/>
+  </bean>
+   -->      
+   
+  
+</beans>

@@ -1,0 +1,14 @@
+es.itecban.deployment.service.data= ITECBAN Data Service 
+es.itecban.deployment.service.data.pump= ITECBAN Data Pump Service 
+es.itecban.deployment.service.interaction= ITECBAN Interaction Service 
+es.itecban.deployment.service.it= ITECBAN IT Service 
+es.itecban.deployment.service.srit= ITECBAN IT Rule Service 
+es.itecban.deployment.service.srn= ITECBAN Business Rule Service 
+es.itecban.deployment.service.business= ITECBAN Business Service 
+es.itecban.deployment.service.osgi= OSGi Service 
+es.itecban.deployment.service.osgi.ds= OSGi Declarative Service 
+es.itecban.deployment.service.presentation= ITECBAN Presentation Service 
+es.itecban.deployment.service.rest= Generic REST Service 
+es.itecban.deployment.service.sca= Generic SCA Service 
+es.itecban.deployment.service.ws= Generic Web Service 
+es.itecban.deployment.service.lightpresentation= ITECBAN Light Presentation Service

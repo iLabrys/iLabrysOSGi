@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="reportSearch">
+		
+	<view-state id="reportSearch" view="reportSearch">	
+		<on-render>
+			<evaluate expression="planReportSearchManager.getEnvironmentList(flowRequestContext)" result="flowScope.environments"/>
+		</on-render>
+		<transition on="search" to="reportList">
+			<evaluate expression="planReportSearchManager.findReportsPaginated(flowRequestContext)" result="flowScope.availableReports"/>
+		</transition>
+	</view-state>
+
+	<view-state id="reportList" view="reportList">
+		<transition on="showReport" to="showReport">
+			<evaluate expression="planReportSearchManager.reviewReportJSON(flowRequestContext, null)" />
+		</transition>
+		<transition on="paginateList" to="reportList">
+			<evaluate expression="planReportSearchManager.findReportsPaginated(flowRequestContext)" result="flowScope.availableReports"/>
+		</transition>
+		<transition on="back" to="reportSearch"/>
+	</view-state>
+	
+	<view-state id="showReport" view="showReport">		
+		<transition on="back" to="reportSearch"/>
+		<transition on="launchAntiPlan" to="launchAntiPlan"/> 
+	</view-state>	
+	
+	
+	<action-state id="launchAntiPlan">
+		<secured attributes="ROLE_EXEC_ADMIN" />
+		<evaluate expression="planLaunchManager.launchAntiPlan(flowRequestContext)" result="flowScope.executionReport"/>		
+		<transition on-exception="java.lang.Exception" to="error"/>
+		<transition to="executionReport"/>		
+	</action-state>	
+	
+	<view-state id="executionReport" view="executionReport">
+		<transition on="OK" to="endLaunch"/>
+		<transition on="showReport" to="showReport">
+			<evaluate expression="planReportSearchManager.getLastReportOfPlan(flowRequestContext, flowScope.planNameUniq)" />
+		</transition>
+		<transition on-exception="java.lang.Exception" to="error"/>
+	</view-state>
+	
+	<view-state id="error" view="error">
+		<transition on="back" to="end"/>
+	</view-state>
+	
+	<end-state id="end" view="underConstruction"></end-state>
+	
+</flow>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema version="1.0" targetNamespace="http://www.itecban.com/arq/message" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.itecban.com/arq/message">
+
+  <xs:element name="ServicioWebServiceException" nillable="true" type="tns:ErrorInfoArqWS"></xs:element>
+
+  <xs:complexType name="preguntaServicioInfraestructuraWs" abstract="true">
+    <xs:sequence>
+      <xs:element name="parte_tecnica" type="tns:P_CabServicioInfraestructura"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="P_CabServicioInfraestructura">
+    <xs:sequence>
+      <xs:element name="DatosTecnicos" type="tns:A_CabDatosTecnicosInfraestructura"></xs:element>
+      <xs:element name="IDPrimarioPeticion" type="xs:string"></xs:element>
+      <xs:element name="IDPeticionario" type="xs:string"></xs:element>
+      <xs:element name="TipoComunicacion" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="A_CabDatosTecnicosInfraestructura">
+    <xs:sequence>
+      <xs:element name="CodigoServicio" type="xs:string"></xs:element>
+      <xs:element name="VersionServicio" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="IdentificadorUnicoMensaje" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="CodigoAplicacionCanal" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="CanalDistribucion" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="MomentoEjecucion" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="Localismo" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="CredencialesSolicitante" type="tns:A_Credenciales" minOccurs="0"></xs:element>
+      <xs:element name="CredencialesAutorizador" type="tns:A_Credenciales" minOccurs="0"></xs:element>
+      <xs:element name="UnidadOrganizativaResponsable" type="tns:A_UnidadOrganizativa" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="A_Credenciales">
+    <xs:sequence>
+      <xs:element name="TipoCredencial" type="xs:int" minOccurs="0"></xs:element>
+      <xs:element name="Credencial" type="xs:string" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="A_UnidadOrganizativa">
+    <xs:sequence>
+      <xs:element name="TipoUnidadOrganizativa" type="xs:int" minOccurs="0"></xs:element>
+      <xs:element name="UnidadOrganizativa" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaServicio" abstract="true">
+    <xs:sequence>
+      <xs:element name="parte_tecnica" type="tns:R_CabServicio"></xs:element>
+      <xs:element name="errorInfo" type="tns:errorInfoDTO" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="R_CabServicio">
+    <xs:sequence>
+      <xs:element name="CodigoRespuesta" type="xs:string"></xs:element>
+      <xs:element name="DatosError" type="xs:string" minOccurs="0"></xs:element>
+      <xs:element name="IdentificadorUnicoMensaje" type="xs:string" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="errorInfoDTO">
+    <xs:sequence>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ErrorInfoArqWS">
+    <xs:sequence>
+      <xs:element name="parteTecnica" type="tns:R_CabServicio" minOccurs="0"></xs:element>
+      <xs:element name="errorInfoDto" type="tns:errorInfoDTO" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

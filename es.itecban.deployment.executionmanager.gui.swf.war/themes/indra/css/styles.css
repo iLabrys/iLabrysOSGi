@@ -1,0 +1,379 @@
+h1,h2,h3,h4,h5,h6,fieldset{margin:0; padding:0;}
+p{font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;}
+a{
+	outline: none;
+}
+
+html{
+	overflow-y: scroll;
+/*
+	height: 100%;
+	padding-bottom: 1px;
+*/
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background: url(../img/bg.jpg) #000000 no-repeat top right;
+	text-align: center;
+	font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+}
+
+#wrap{
+	width: 700px;
+	margin: 0 auto;
+	text-align:left;
+	
+}
+
+#logo{
+	padding-top: 5px;
+	padding-bottom:5px;
+}
+
+#logo b{
+	color: #FFFFFF;
+	margin-left: 0px;
+	margin-right: 45px;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+#logo a{
+	color: #FFFFFF;
+	margin-left: 0px;
+	margin-right: 45px;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+#logo a:hover{
+	text-decoration:underline;	
+}
+
+#logoMenu{
+	background-color: #000000;
+}
+
+#logoMenu div{
+	margin: 2px;
+	height: 23px;
+}
+
+#logoMenu div img{
+	width: 211px;
+	height: 23px;
+}
+
+#logoMenu div.execution{
+	background: url(../img/logoMenu.gif) no-repeat 0px 0px;
+}
+
+#logoMenu div.executionOver{
+	background: url(../img/logoMenu.gif) no-repeat 0px -92px;
+}
+
+#logoMenu div.environment{
+	background: url(../img/logoMenu.gif) no-repeat 0px -23px;
+}
+
+#logoMenu div.environmentOver{
+	background: url(../img/logoMenu.gif) no-repeat 0px -115px;
+}
+
+#logoMenu div.repository{
+	background: url(../img/logoMenu.gif) no-repeat 0px -46px;
+}
+
+#logoMenu div.repositoryOver{
+	background: url(../img/logoMenu.gif) no-repeat 0px -138px;
+}
+
+#logoMenu div.artifact{
+	background: url(../img/logoMenu.gif) no-repeat 0px -69px;
+}
+
+#logoMenu div.artifactOver{
+	background: url(../img/logoMenu.gif) no-repeat 0px -161px;
+}
+
+#outerContentBox{
+	background-color: #999999;
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	width: 100%;
+	padding-bottom:15px;
+}
+
+#navigation{
+	padding-top: 10px;
+	padding-bottom:10px;
+}
+
+#navigation a{
+	margin-left: 15px;
+	margin-right: 30px;
+	font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	border-bottom: 1px dashed #FFFFFF;
+}
+
+#navigation a:hover{
+	border-bottom: 1px solid #FFFFFF;
+}
+
+#innerContentBox{
+	background: url(../img/bgBlueTree.gif) #E6E6E6 no-repeat bottom right;
+	width: 670px;
+	margin-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 500px;
+}
+
+#contentBox{
+	background: #FFFFFF;
+	width: 415px;
+	text-align: left;
+	margin-left: 15px;
+	border: 1px solid #666666;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+}
+
+#content{
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+
+#contentBox h1{
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 10px;
+	font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333333;
+	border-bottom:1px solid #333333;
+}
+
+#contentBox p{
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 13px;
+	color: #333333;
+}
+
+#contentBox a{
+	color: #C78340;
+}
+
+#contentBox ul{
+	margin-left: 0px;
+	padding-left: 15px;
+	padding-bottom: 20px;
+}
+
+#contentBox ul li{
+	font-size: 13px;
+	margin-left: 0px;
+	padding-left:13px;
+	padding-top:3px;
+	padding-bottom: 3px;
+	background: url(../img/bullet.gif) no-repeat left ;
+	list-style: none;
+}
+
+#contentBox ul li a{
+	font-size: 13px;
+	padding:0px;
+	margin: 0px;
+}
+
+
+#contentBox fieldset{
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 13px;
+	font-weight: bold;
+	border:1px solid #333333;
+}
+
+#contentBox fieldset p{
+	font-weight: normal;
+	font-size: 13px;
+}
+
+#contentBox fieldset label{
+	font-weight: normal;
+	font-size: 13px;
+}
+
+#contentBox fieldset div.indent{
+	margin-left: 15px;
+}
+
+#contentBox fieldset div.indent input{
+	margin-left: 15px;
+}
+
+#contentBox fieldset div.indent select{
+	margin-left: 15px;
+}
+
+#contentBox .w100{	width: 100px; }
+#contentBox .w200{	width: 200px; }
+#contentBox .w300{	width: 300px; }
+#contentBox .w400{	width: 400px; }
+
+#contentBox div.bt{
+	text-align: right;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+#contentBox fieldset input.border{
+	border: 1px solid #333333;
+}
+
+#contentBox div.bt input.border{
+	border: 1px dotted #9E6833;
+	background: #FBCF9E;
+	font-size: 12px;
+	color: #9E6833;
+	vertical-align: middle;
+	outline: none;
+}
+
+
+
+#contentBox fieldset select.border{
+	border: 1px solid #333333;
+}
+
+#contentBox div.blockBox{
+	margin-left:15px;
+	margin-right:15px;
+	border:1px dashed #333333;
+	margin-bottom: 30px;
+}
+
+#contentBox div.blockBox p{
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+#contentBox div.blockBox p a{
+	color: #333333;
+	text-decoration: none;
+}
+
+#contentBox div.blockBox p a.link{
+	color: #9E6833;
+	text-decoration: underline;
+}
+
+#contentBox div.blockBox p.title{
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#contentBox div.blockBox div{
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-bottom: 10px;
+	display: none;
+}
+
+#pie {
+	margin-top:45px;
+	border-top: 1px dashed #CCCCCC;
+}
+
+#msgBox{
+	margin-left: 15px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	width: 205px;
+	text-align: left;
+}
+
+#msgBox h1{
+	padding-top: 20px;
+	padding-left: 74px;
+}
+
+#msgBox h1.warning{
+	background: url(../img/ico_warning.gif) no-repeat left top;
+}
+
+#msgBox h1.info{
+	background: url(../img/ico_info.gif) no-repeat left top;
+}
+
+#msgBox h1.error{
+	background: url(../img/ico_error.gif) no-repeat left top;
+}
+
+#msgBox h1.XML{
+	background: url(../img/ico_download_xml.gif) no-repeat left top;
+}
+
+#msgBox p{
+	font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+}
+
+#msgBox p a{
+	color: #C78340;
+}
+
+#loginBox{
+	margin-left: 15px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	width: 205px;
+	text-align: left;
+	border-bottom: 1px solid #333333;
+	font-family: 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+#loginBox div.user{
+	width: 150px;
+	float: left;
+}
+
+#loginBox div.login{
+	text-align: right;
+}
+
+#loginBox div.login a{
+	color: #333333;
+	text-decoration: none;
+}
+
+#loginBox div.login a:hover{
+	text-decoration: underline;
+}

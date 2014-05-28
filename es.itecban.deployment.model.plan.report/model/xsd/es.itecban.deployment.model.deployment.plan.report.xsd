@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:dpr="http://model.deployment.itecban.es/DeploymentPlanReport" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://model.deployment.itecban.es/DeploymentPlanReport">
+    
+    <xsd:element name="executionReport" type="dpr:ExecutionReportType"/>
+    <xsd:element name="activity" type="dpr:ActivityExecReportType"/>
+    
+	<xsd:complexType name="ActivityExecReportType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="activityId" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="startTime" type="xsd:dateTime"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="endTime" type="xsd:dateTime"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="resultCode" type="xsd:string"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="result" type="dpr:ActivityResultKindType"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="technicalActivityExecReport" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="PlanResultKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="OK"/>
+			<xsd:enumeration value="FAILED"/>
+			<xsd:enumeration value="ROLLBACKED"/>			
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActivityResultKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="OK"/>
+			<xsd:enumeration value="TIMEOUT"/>
+			<xsd:enumeration value="CONNECTION_PROBLEM"/>
+			<xsd:enumeration value="CONFIGURATION_PROBLEM"/>
+			<xsd:enumeration value="UNAVAILABLE_UNIT(S)"/>
+			<xsd:enumeration value="UNKNOWN"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+    <xsd:complexType name="ExecutionReportType">
+    	<xsd:sequence>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="planId" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="startTime" type="xsd:dateTime">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="endTime" type="xsd:dateTime">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="creationUserId" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="launcherUserId" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="environment" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="technicalExecutionReport" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="result" type="dpr:PlanResultKindType">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="message" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="activitiesExecutionReport">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="1" name="activityExecutionReport" type="dpr:ActivityExecReportType">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://model.deployment.itecban.es/DependencyGraph"
+	xmlns:du="http://model.deployment.itecban.es/DeploymentUnit" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:dg="http://model.deployment.itecban.es/DependencyGraph"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+	<xsd:import schemaLocation="es.itecban.deployment.model.deployment.unit.xsd"
+		namespace="http://model.deployment.itecban.es/DeploymentUnit"></xsd:import>
+	<xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+	<xsd:element name="dependencyGraph" type="dg:DependencyGraph" />
+	<xsd:complexType name="DependencyGraph">
+		<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="1"
+								name="node" type="dg:Node" />
+					
+							<xsd:element maxOccurs="unbounded" minOccurs="0"
+								name="dependency" type="dg:Dependency" />
+			
+		</xsd:sequence>
+		<xsd:attribute name="origin" ecore:reference="dg:Node"	type="xsd:IDREF" />
+	</xsd:complexType>
+	
+	<xsd:complexType name="Node">
+		<xsd:sequence>
+			<xsd:element name="unit" type="du:DeploymentUnitType" maxOccurs="1" minOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:ID" use="required"/>
+		<xsd:attribute name="dependency" ecore:reference="dg:Dependency" type="xsd:IDREFS"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Dependency">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded" type = "dg:Cause" name="cause"/>
+		</xsd:sequence>
+		<xsd:attribute name="locality"	type="xsd:string" />
+		<xsd:attribute name="destination"		ecore:reference="dg:Node" type="xsd:IDREF" />
+		<xsd:attribute name="source"	ecore:reference="dg:Node" type="xsd:IDREF" />
+		<xsd:attribute name="id" type="xsd:ID" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Cause">
+		<xsd:attribute name="name"	type="xsd:string" />
+		<xsd:attribute name="type"	type="xsd:string" />
+	</xsd:complexType>
+</xsd:schema>

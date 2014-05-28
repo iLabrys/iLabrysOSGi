@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="createNewPlan">
+ 
+
+	<on-start>
+		<evaluate expression="updatePlanCreationManager.initialize(flowRequestContext)" result="flowScope.supportedGoals"/>
+	</on-start>
+	
+	<!-- Initial welcome screen -->
+	<view-state id="createNewPlan" view="createPlan">
+		<!-- Button that goes to the environment selection screen -->
+		<transition on="createNewPlan" to="selectDefaultGoal" />
+		<transition on="changePlanType" to="end" />
+	</view-state>
+	
+	<action-state id="selectDefaultGoal">
+		<evaluate expression="updatePlanCreationManager.selectDefaultGoalID(flowRequestContext)"/>
+		<transition on="yes" to="environmentSelection"/>		
+	</action-state>
+	
+	<!-- List of available environments. User can select from a list -->
+	<view-state id="environmentSelection" view="environmentSelection">
+		<on-render>
+			<evaluate expression="updatePlanCreationManager.getEnvironments(flowRequestContext)" />
+		</on-render>
+		<!-- Button that confirms the selection of the environment -->
+		<transition on="selectEnvironment" to="selectEnvironment"/>
+		<transition on="back" to="createNewPlan"/>
+	</view-state>
+	
+	<action-state id="selectEnvironment">
+		<evaluate expression="updatePlanCreationManager.selectEnvironment(flowRequestContext)"/>
+		<transition on-exception="java.lang.Exception" to="error" />
+		<transition on="yes" to="findDeploymentUnit"/>		
+	</action-state>
+	
+	<view-state id="findDeploymentUnit" view="findDeploymentUnit">
+		<on-render>
+			<evaluate expression="taxonomyHelper.getRegisteredCategories()" result="flowScope.categories" />
+		</on-render>
+		<transition on="findDeploymentUnit" to="pickDeploymentUnit">
+			<evaluate expression="updatePlanCreationManager.findListDeploymentUnitsPaginated(flowRequestContext)" />
+		</transition>
+		<transition on-exception="java.lang.Exception" to="error" />
+		<transition on="back" to="environmentSelection"/>
+	</view-state>
+	
+	<view-state id="pickDeploymentUnit" view="pickDeploymentUnit">
+		<transition on="paginatedListDU" to="pickDeploymentUnit">
+			<evaluate expression="updatePlanCreationManager.findListDeploymentUnitsPaginated(flowRequestContext)" />
+		</transition>
+		<transition on="selectUnit" to="selectUnit"/>
+		<transition on="back" to="findDeploymentUnit"/>
+	</view-state>
+	
+	<action-state id="selectUnit">
+		<evaluate expression="updatePlanCreationManager.selectUnit(flowRequestContext, flowScope.planNameUniq)" />
+		<transition on-exception="java.lang.Exception" to="error" />
+		<transition on="success" to="pickTargetNodes"/>
+	</action-state>
+	
+	<view-state id="pickTargetNodes" view="pickTargetNodes">
+		<on-render>
+			<evaluate expression="updatePlanCreationManager.findTargetContainers(flowRequestContext)" />
+		</on-render>
+		<transition on-exception="java.lang.Exception" to="error" />
+		<transition on="map" to="map"/>
+		<transition on="impactAndMap" to="impactAndMap"/>
+		<transition on="back" to="pickDeploymentUnit"/>
+	</view-state>
+		
+	<action-state id="map">
+		<evaluate expression="updatePlanCreationManager.map(flowRequestContext, flowScope.deploymentGroups, flowScope.containers, flowScope.planNameUniq)"/>
+		<transition on-exception="java.lang.Exception" to="error"/>		
+		<transition on="yes" to="warnAbout"/>
+	</action-state>
+	
+	<action-state id="impactAndMap">		
+		<evaluate expression="updatePlanCreationManager.map(flowRequestContext, flowScope.deploymentGroups, flowScope.containers, flowScope.planNameUniq)"/>
+		<transition on="yes" to="planExecutionImpact"/>
+		<transition on-exception="java.lang.Exception" to="error"/>
+	</action-state>
+		
+	<view-state id="planExecutionImpact" view="planExecutionImpact">	
+		<transition on="back" to="pickTargetNodes"/>		
+		<transition on="next" to="warnAbout"/>
+	</view-state>
+	
+	<view-state id="warnAbout" view="warnAbout">
+		<transition on="back" to="pickTargetNodes"/>
+		<transition on="next" to="reviewPlan"/>
+	</view-state>
+	
+	<view-state id="reviewPlan" view="launchPlan">
+		<transition on="save" to="saveView"/>
+		<transition on="cancel" to="end"/>
+	</view-state>
+	
+	<view-state id="saveView" view="saveView">
+		<on-render>
+			<evaluate expression="updatePlanCreationManager.savePlan(flowRequestContext, flowScope.planNameUniq)"/>
+		</on-render>
+		<transition on="launchPlan" to="showPlan"/>
+		<transition on="createNewPlan" to="end"/>
+		<transition on="finish" to="end"/>
+	</view-state>
+	
+	<view-state id="showPlan" view="showPlan">
+		<transition on="launch" to="planReady"/>
+		<transition on="back" to="saveView"/>
+	</view-state>
+	
+	<view-state id="error" view="error">
+		<transition on="back" to="end"/>
+	</view-state>
+	
+	<subflow-state id="planReady" subflow="launchPlan">
+		<input name="planNameUniq" value="flowScope.planNameUniq" required="true"/>
+		<transition on="endLaunch" to="createNewPlan"/>
+		<transition on="planLaunchCancelled" to="pickTargetNodes"/>
+	</subflow-state>
+		
+	<end-state id ="end"/>
+
+</flow>

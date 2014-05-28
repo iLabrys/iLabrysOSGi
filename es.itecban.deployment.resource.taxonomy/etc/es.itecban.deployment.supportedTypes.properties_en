@@ -1,0 +1,9 @@
+es.itecban.deployment.service= Services Type 
+es.itecban.deployment.container= Containers Type 
+es.itecban.deployment.process= Process Type 
+es.itecban.deployment.j2ee= J2EE Specific Type 
+es.itecban.deployment.java= Basic Java Type 
+es.itecban.deployment.packaging= Packaging Type 
+es.itecban.deployment.system= System Type 
+es.itecban.deployment.rules= Rules Type 
+es.itecban.deployment.architecture= Architecture Type 

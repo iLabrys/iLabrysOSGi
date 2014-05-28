@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.itecban.deployment.model.environment/src"
+    modelPluginID="es.itecban.deployment.model.environment" modelName="es.itecban.deployment.model.deployment"
+    suppressEMFTypes="true" featureMapWrapperInterface="" featureMapWrapperInternalInterface=""
+    featureMapWrapperClass="" importerID="org.eclipse.xsd.ecore.importer" suppressNotification="true"
+    suppressUnsettable="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>../xsd/es.itecban.deployment.model.environment.graph.xsd</foreignModel>
+  <genPackages prefix="Graph" basePackage="es.itecban.deployment.model.environment"
+      resource="XML" disposableProviderFactory="true" ecorePackage="graph.ecore#/">
+    <genClasses ecoreClass="graph.ecore#//Cause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Cause/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Cause/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Cause/version"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//Dependency">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//Dependency/cause"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//Dependency/destination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Dependency/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Dependency/locality"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//Dependency/source"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/cause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/dependency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/environmentGraph"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//DocumentRoot/node"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//EnvironmentGraph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//EnvironmentGraph/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//EnvironmentGraph/dependencies"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//EnvironmentGraph/origins"/>
+    </genClasses>
+    <genClasses ecoreClass="graph.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/containerName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//Node/dependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//Node/isRequiredBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/unitName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//Node/unitVersion"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

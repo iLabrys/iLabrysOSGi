@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.itecban.deployment.model.plan.report/src"
+    modelPluginID="es.itecban.deployment.model.plan.report" modelName="es.itecban.deployment.model.deployment.plan"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>../xsd/es.itecban.deployment.model.deployment.plan.report.xsd</foreignModel>
+  <genPackages prefix="Report" basePackage="es.itecban.deployment.model.deployment.plan"
+      resource="XML" disposableProviderFactory="true" ecorePackage="es.itecban.deployment.model.deployment.plan.report.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType">
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/OK"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/TIMEOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/CONNECTIONPROBLEM"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/CONFIGURATIONPROBLEM"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/UNAVAILABLEUNITS"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindType/UNKNOWN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType">
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/OK"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/FAILED"/>
+      <genEnumLiterals ecoreEnumLiteral="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindType/ROLLBACKED"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityResultKindTypeObject"/>
+    <genDataTypes ecoreDataType="es.itecban.deployment.model.deployment.plan.report.ecore#//PlanResultKindTypeObject"/>
+    <genClasses ecoreClass="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivitiesExecutionReportType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//ActivitiesExecutionReportType/activityExecutionReport"/>
+    </genClasses>
+    <genClasses ecoreClass="es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/activityId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/endTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/resultCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/result"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ActivityExecReportType/technicalActivityExecReport"/>
+    </genClasses>
+    <genClasses ecoreClass="es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/activity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//DocumentRoot/executionReport"/>
+    </genClasses>
+    <genClasses ecoreClass="es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/planId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/endTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/creationUserId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/launcherUserId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/environment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/technicalExecutionReport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/result"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/message"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference es.itecban.deployment.model.deployment.plan.report.ecore#//ExecutionReportType/activitiesExecutionReport"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core Interfaces and Data Types for the services offered by the Repository component of the ITECBAN Deployment Architecture
+Bundle-SymbolicName: es.itecban.deployment.repository.core
+Bundle-Version: 1.0.0
+Import-Package: es.itecban.deployment.model.dependency.graph,
+ es.itecban.deployment.model.deployment.unit,
+ es.itecban.deployment.model.deployment.unit.impl,
+ es.itecban.deployment.model.deployment.unit.util,
+ es.itecban.deployment.model.software.product,
+ es.itecban.deployment.model.software.product.impl,
+ es.itecban.deployment.model.software.product.util
+Export-Package: es.itecban.deployment.repository.services,
+ es.itecban.deployment.repository.services.core
+Require-Bundle: org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi

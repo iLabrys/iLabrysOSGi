@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Environment Model
+Bundle-SymbolicName: es.itecban.deployment.model.environment;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .,
+ lib/commons-logging-1.0.4.jar
+Bundle-Vendor: DIT-UPM
+Bundle-Localization: plugin
+Export-Package: es.itecban.deployment.model.deployment.target,
+ es.itecban.deployment.model.deployment.target.impl,
+ es.itecban.deployment.model.deployment.target.marshaller,
+ es.itecban.deployment.model.deployment.target.util,
+ es.itecban.deployment.model.environment.graph.impl,
+ es.itecban.deployment.model.environment.graph.marshaller,
+ es.itecban.deployment.model.environment.graph,
+ es.itecban.deployment.model.environment.graph.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport
+Eclipse-LazyStart: true
+Import-Package: es.itecban.deployment.model.deployment.unit,
+ es.itecban.deployment.model.deployment.unit.impl,
+ es.itecban.deployment.model.deployment.unit.util

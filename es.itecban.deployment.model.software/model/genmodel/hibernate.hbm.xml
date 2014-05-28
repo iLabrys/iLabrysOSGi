@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="unit.LocalityConstraintTypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://model.deployment.itecban.es/DeploymentUnit</param>
+		<param name="edatatype">LocalityConstraintTypeObject</param>
+	</typedef>
+	<typedef name="unit.PropertyKindTypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://model.deployment.itecban.es/DeploymentUnit</param>
+		<param name="edatatype">PropertyKindTypeObject</param>
+	</typedef>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.ConstraintsTypeImpl" entity-name="ConstraintsType" abstract="false" lazy="false" discriminator-value="ConstraintsType" table="`constraintstype`">
+		<meta attribute="eclassName">ConstraintsType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="constraint" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="constraintstype_constraint">
+				<column name="`constraintstype_constraint_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`constraintstype_constraint_idx`"/>
+			<one-to-many entity-name="RequiredResourceType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.DependenciesTypeImpl" entity-name="DependenciesType" abstract="false" lazy="false" discriminator-value="DependenciesType" table="`dependenciestype`">
+		<meta attribute="eclassName">DependenciesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="dependencyExpression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`dependencyexpression`"/>
+		</property>
+		<list name="dependency" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="dependenciestype_dependency">
+				<column name="`dependenciestype_dependency_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`dependenciestype_dependency_idx`"/>
+			<one-to-many entity-name="DependencyType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.DependencyTypeImpl" entity-name="DependencyType" abstract="false" lazy="false" discriminator-value="DependencyType" table="`dependencytype`">
+		<meta attribute="eclassName">DependencyType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`id`"/>
+		</property>
+		<property name="locality" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`locality`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">es.itecban.deployment.model.deployment.unit.LocalityConstraintType</param>
+			</type>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`description`"/>
+		</property>
+		<many-to-one name="requiredResource" entity-name="RequiredResourceType" cascade="all" foreign-key="dependencytype_requiredresource" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`requiredresourcetype_requiredresource_e_id`"/>
+		</many-to-one>
+		<many-to-one name="requiredPackage" entity-name="PackageType" cascade="all" foreign-key="dependencytype_requiredpackage" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`packagetype_requiredpackage_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.DeploymentUnitTypeImpl" entity-name="DeploymentUnitType" abstract="false" lazy="false" discriminator-value="DeploymentUnitType" table="`deploymentunittype`">
+		<meta attribute="eclassName">DeploymentUnitType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="version" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`version`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`description`"/>
+		</property>
+		<many-to-one name="provider" entity-name="ProviderType" cascade="all" foreign-key="deploymentunittype_provider" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`providertype_provider_e_id`"/>
+		</many-to-one>
+		<many-to-one name="package" entity-name="PackageType" cascade="all" foreign-key="deploymentunittype_package" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`packagetype_package_e_id`"/>
+		</many-to-one>
+		<many-to-one name="exportedResources" entity-name="ExportedResourcesType" cascade="all" foreign-key="deploymentunittype_exportedresources" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`exportedresourcestype_exportedresources_e_id`"/>
+		</many-to-one>
+		<many-to-one name="dependencies" entity-name="DependenciesType" cascade="all" foreign-key="deploymentunittype_dependencies" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`dependenciestype_dependencies_e_id`"/>
+		</many-to-one>
+		<many-to-one name="constraints" entity-name="ConstraintsType" cascade="all" foreign-key="deploymentunittype_constraints" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`constraintstype_constraints_e_id`"/>
+		</many-to-one>
+		<many-to-one name="unitRepositories" entity-name="UnitRepositoriesType" cascade="all" foreign-key="deploymentunittype_unitrepositories" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`unitrepositoriestype_unitrepositories_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.ExportedResourcesTypeImpl" entity-name="ExportedResourcesType" abstract="false" lazy="false" discriminator-value="ExportedResourcesType" table="`exportedresourcestype`">
+		<meta attribute="eclassName">ExportedResourcesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="exportedResource" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="exportedresourcestype_exportedresource">
+				<column name="`exportedresourcestype_exportedresource_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`exportedresourcestype_exportedresource_idx`"/>
+			<one-to-many entity-name="ResourceType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.PackageTypeImpl" entity-name="PackageType" abstract="false" lazy="false" discriminator-value="PackageType" table="`packagetype`">
+		<meta attribute="eclassName">PackageType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`version`"/>
+		</property>
+		<property name="type" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`type`"/>
+		</property>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.PropertyTypeImpl" entity-name="PropertyType" abstract="false" lazy="false" discriminator-value="PropertyType" table="`propertytype`">
+		<meta attribute="eclassName">PropertyType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`value`"/>
+		</property>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.ProviderTypeImpl" entity-name="ProviderType" abstract="false" lazy="false" discriminator-value="ProviderType" table="`providertype`">
+		<meta attribute="eclassName">ProviderType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+			<column not-null="true" unique="false" name="`id`"/>
+		</property>
+		<property name="homeUrl" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`homeurl`"/>
+		</property>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.RequiredResourcePropertiesTypeImpl" entity-name="RequiredResourcePropertiesType" abstract="false" lazy="false" discriminator-value="RequiredResourcePropertiesType" table="`requiredresourcepropertiestype`">
+		<meta attribute="eclassName">RequiredResourcePropertiesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="property" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="requiredresourcepropertiestype_property">
+				<column name="`requiredresourcepropertiestype_property_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`requiredresourcepropertiestype_property_idx`"/>
+			<one-to-many entity-name="RequiredResourcePropertyType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.RequiredResourcePropertyTypeImpl" entity-name="RequiredResourcePropertyType" abstract="false" lazy="false" discriminator-value="RequiredResourcePropertyType" table="`requiredresourcepropertytype`">
+		<meta attribute="eclassName">RequiredResourcePropertyType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="value" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`value`"/>
+		</property>
+		<property name="kind" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`kind`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">es.itecban.deployment.model.deployment.unit.PropertyKindType</param>
+			</type>
+		</property>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.RequiredResourceTypeImpl" entity-name="RequiredResourceType" abstract="false" lazy="false" discriminator-value="RequiredResourceType" table="`requiredresourcetype`">
+		<meta attribute="eclassName">RequiredResourceType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`version`"/>
+		</property>
+		<property name="type" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`type`"/>
+		</property>
+		<many-to-one name="requiredResourceProperties" entity-name="RequiredResourcePropertiesType" cascade="all" foreign-key="requiredresourcetype_requiredresourceproperties" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`requiredresourcepropertiestype_requiredresourceproperties_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.ResourcePropertiesTypeImpl" entity-name="ResourcePropertiesType" abstract="false" lazy="false" discriminator-value="ResourcePropertiesType" table="`resourcepropertiestype`">
+		<meta attribute="eclassName">ResourcePropertiesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="resourceProperty" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="resourcepropertiestype_resourceproperty">
+				<column name="`resourcepropertiestype_resourceproperty_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`resourcepropertiestype_resourceproperty_idx`"/>
+			<one-to-many entity-name="PropertyType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.ResourceTypeImpl" entity-name="ResourceType" abstract="false" lazy="false" discriminator-value="ResourceType" table="`resourcetype`">
+		<meta attribute="eclassName">ResourceType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="version" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`version`"/>
+		</property>
+		<many-to-one name="types" entity-name="TypesType" cascade="all" foreign-key="resourcetype_types" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`typestype_types_e_id`"/>
+		</many-to-one>
+		<many-to-one name="resourceProperties" entity-name="ResourcePropertiesType" cascade="all" foreign-key="resourcetype_resourceproperties" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`resourcepropertiestype_resourceproperties_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.TypesTypeImpl" entity-name="TypesType" abstract="false" lazy="false" discriminator-value="TypesType" table="`typestype`">
+		<meta attribute="eclassName">TypesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="type" table="`typestype_type`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`typestype_type_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`typestype_type_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.unit.impl.UnitRepositoriesTypeImpl" entity-name="UnitRepositoriesType" abstract="false" lazy="false" discriminator-value="UnitRepositoriesType" table="`unitrepositoriestype`">
+		<meta attribute="eclassName">UnitRepositoriesType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentUnit</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="repository" table="`unitrepositoriestype_repository`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`unitrepositoriestype_repository_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`unitrepositoriestype_repository_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+</hibernate-mapping>

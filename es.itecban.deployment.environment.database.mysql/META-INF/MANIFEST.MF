@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Mysql EnvironmentManager Database Fragment
+Bundle-SymbolicName: es.itecban.deployment.environment.database.mysql
+Bundle-Version: 1.0.0
+Bundle-Vendor: ITECBAN
+Fragment-Host: es.itecban.deployment.environmentmanager;bundle-version="1.0.0"
+Export-Package: es.itecban.deployment.environmentmanager.manager.queryprovider.mysql

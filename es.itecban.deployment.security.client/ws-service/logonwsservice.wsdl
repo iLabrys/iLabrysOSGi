@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="LogonWsService" targetNamespace="http://ws.endpoints.seguridad.src.itecban.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.endpoints.seguridad.src.itecban.com/" xmlns:ns1="http://www.itecban.com/arq/message" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.itecban.com/arq/message" schemaLocation="LogonWsService_schema1.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.endpoints.seguridad.src.itecban.com/" schemaLocation="LogonWsService_schema2.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="logonResponse">
+    <part name="parameters" element="tns:logonResponse">
+    </part>
+  </message>
+  <message name="ServicioWebServiceException">
+    <part name="fault" element="ns1:ServicioWebServiceException">
+    </part>
+  </message>
+  <message name="logon">
+    <part name="parameters" element="tns:logon">
+    </part>
+  </message>
+  <portType name="ILogonWs">
+    <operation name="logon">
+      <input message="tns:logon">
+    </input>
+      <output message="tns:logonResponse">
+    </output>
+      <fault name="ServicioWebServiceException" message="tns:ServicioWebServiceException">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="LogonWsPortBinding" type="tns:ILogonWs">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="logon">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ServicioWebServiceException">
+        <soap:fault name="ServicioWebServiceException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="LogonWsService">
+    <port name="LogonWsPort" binding="tns:LogonWsPortBinding">
+      <soap:address location="http://10.65.233.100:9082/WsItecbanSecurity/LogonWsService"/>
+    </port>
+  </service>
+</definitions>

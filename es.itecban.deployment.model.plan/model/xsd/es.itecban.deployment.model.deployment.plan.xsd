@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://model.deployment.itecban.es/DeploymentPlan"
+	xmlns:dp="http://model.deployment.itecban.es/DeploymentPlan" xmlns:du="http://model.deployment.itecban.es/DeploymentUnit"
+	xmlns:dt="http://model.deployment.itecban.es/DeploymentTarget"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import
+		schemaLocation="../../../es.itecban.deployment.model.environment/model/xsd/es.itecban.deployment.model.deployment.target.xsd"
+		namespace="http://model.deployment.itecban.es/DeploymentTarget"></xsd:import>
+	<xsd:import
+		schemaLocation="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd"
+		namespace="http://model.deployment.itecban.es/DeploymentUnit"></xsd:import>
+	<xsd:element name="plan" type="dp:DeploymentPlanType" />
+	<xsd:element name="schedule" type="dp:ScheduleType" />
+	<xsd:element name="activity" type="dp:DeploymentActivityType" />
+	<xsd:simpleType name="ActivityKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="INSTALL_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="UPDATE_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="CONFIGURE_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="UNINSTALL_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="START_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="STOP_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="ADD_CONTAINER_RESOURCE" />
+			<xsd:enumeration value="REMOVE_CONTAINER_RESOURCE" />
+			<xsd:enumeration value="CONFIGURE_CONTAINER_RESOURCE" />
+			<xsd:enumeration value="CONFIGURE_CONTAINER_PROPERTY" />
+			<xsd:enumeration value="CONFIGURE_UNIT_RESOURCE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DeploymentActivityKindType">
+		<xsd:restriction base="dp:ActivityKindType">
+			<xsd:enumeration value="INSTALL_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="UPDATE_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="UNINSTALL_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="START_DEPLOYMENT_UNIT" />
+			<xsd:enumeration value="STOP_DEPLOYMENT_UNIT" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ConfigurationActivityKindType">
+		<xsd:restriction base="dp:ActivityKindType">
+			<xsd:enumeration value="CONFIGURE_CONTAINER_RESOURCE" />
+			<xsd:enumeration value="CONFIGURE_CONTAINER_PROPERTY" />
+			<xsd:enumeration value="CONFIGURE_UNIT_RESOURCE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResourceActivityKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ADD_CONTAINER_RESOURCE" />
+			<xsd:enumeration value="REMOVE_CONTAINER_RESOURCE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ActivityType" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="activityId" type="xsd:int" maxOccurs="1"
+				minOccurs="1">
+			</xsd:element>
+			<xsd:element name="target" type="xsd:string" maxOccurs="1"
+				minOccurs="1">
+			</xsd:element>
+			<xsd:element name="dependency" type="xsd:int" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DeploymentActivityType">
+		<xsd:complexContent>
+			<xsd:extension base="dp:ActivityType">
+				<xsd:sequence>
+					<xsd:element name="type"
+						type="dp:DeploymentActivityKindType" maxOccurs="1"
+						minOccurs="1">
+					</xsd:element>
+					<xsd:element name="unitName" type="xsd:string"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="unitVersion" type="xsd:string"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0"
+						name="initialConfiguration">
+						<xsd:annotation>
+							<xsd:documentation>
+								Optional initial configuration values
+								for install /update operations
+							</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded"
+									minOccurs="1" name="configuration"
+									type="dp:ResourceConfigurationType">
+									<xsd:annotation>
+										<xsd:documentation>
+											Collection of resource
+											configurations to be applied
+											to the unit
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="previousUnitName"
+						type="xsd:string" maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="previousUnitVersion" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ResourceConfigurationType">
+		<xsd:annotation>
+			<xsd:documentation>
+			ResourceConfigurationType elemeents include the initial configuration of one resource of the 
+			selected unit (identified by the resource name)
+	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="name" type="xsd:string"
+				maxOccurs="1">
+			</xsd:element>
+			<xsd:element name="configurationProperties" minOccurs="1"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded"
+							name="configurationProperties" type="du:PropertyType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResourceActivityType">
+		<xsd:complexContent>
+			<xsd:extension base="dp:ActivityType">
+				<xsd:sequence>
+					<xsd:element name="type" type="dp:ResourceActivityKindType"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element name="resource" type="du:ResourceType"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ConfigurationActivityType">
+		<xsd:complexContent>
+			<xsd:extension base="dp:ActivityType">
+				<xsd:sequence>
+					<xsd:element name="type" type="dp:ConfigurationActivityKindType"
+						maxOccurs="1" minOccurs="1">
+					</xsd:element>
+					<xsd:element minOccurs="1" name="configuration">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element minOccurs="1" maxOccurs="unbounded"
+									name="property" type="du:PropertyType" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DeploymentPlanType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" maxOccurs="1"
+				minOccurs="1">
+			</xsd:element>
+			<xsd:element name="environment" type="xsd:string"
+				maxOccurs="1" minOccurs="1">
+			</xsd:element>
+			<xsd:element minOccurs="1" name="activities">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" name="activity"
+							type="dp:ActivityType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="scheduleData" type="dp:ScheduleType"
+				maxOccurs="1" minOccurs="1">
+			</xsd:element>
+			<xsd:element name="planStatus" type="xsd:string"
+				maxOccurs="1" minOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ScheduleType">
+		<xsd:sequence>
+			<xsd:element name="creationDate" type="xsd:dateTime"
+				maxOccurs="1" minOccurs="1">
+			</xsd:element>
+			<xsd:element name="scheduledLaunchDate" type="xsd:dateTime"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element name="lastModificationDate" type="xsd:dateTime"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

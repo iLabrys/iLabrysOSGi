@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema version="1.0" targetNamespace="http://ws.endpoints.seguridad.src.itecban.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.itecban.com/arq/message" xmlns:tns="http://ws.endpoints.seguridad.src.itecban.com/">
+
+  <xs:import namespace="http://www.itecban.com/arq/message" schemaLocation="LogonWsService_schema1.xsd"></xs:import>
+
+  <xs:element name="logon" type="tns:logon"></xs:element>
+
+  <xs:element name="logonResponse" type="tns:logonResponse"></xs:element>
+
+  <xs:complexType name="logon">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:requestMessageLogonWs" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestMessageLogonWs">
+    <xs:complexContent>
+      <xs:extension base="ns1:preguntaServicioInfraestructuraWs">
+        <xs:sequence>
+          <xs:element name="specificPart" type="tns:logonInputDTO"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="logonInputDTO">
+    <xs:sequence>
+      <xs:element name="idOrigin" type="xs:string"></xs:element>
+      <xs:element name="password" type="xs:string"></xs:element>
+      <xs:element name="user" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="logonResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:responseMessageLogonWs" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseMessageLogonWs">
+    <xs:complexContent>
+      <xs:extension base="ns1:respuestaServicio">
+        <xs:sequence>
+          <xs:element name="specificPart" type="tns:logonOutputDTO" minOccurs="0"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="logonOutputDTO">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

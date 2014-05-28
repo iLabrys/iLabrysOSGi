@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Software Model
+Bundle-SymbolicName: es.itecban.deployment.model.software;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .
+Bundle-Vendor: DIT-UPM
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: es.itecban.deployment.model.dependency.graph,
+ es.itecban.deployment.model.dependency.graph.impl,
+ es.itecban.deployment.model.dependency.graph.marshaller,
+ es.itecban.deployment.model.dependency.graph.util,
+ es.itecban.deployment.model.deployment.unit,
+ es.itecban.deployment.model.deployment.unit.impl,
+ es.itecban.deployment.model.deployment.unit.marshaller,
+ es.itecban.deployment.model.deployment.unit.util,
+ es.itecban.deployment.model.software.product,
+ es.itecban.deployment.model.software.product.impl,
+ es.itecban.deployment.model.software.product.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport

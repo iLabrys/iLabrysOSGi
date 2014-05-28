@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Oracle Database Fragment Environment Manager
+Bundle-SymbolicName: es.itecban.deployment.environment.database.oracle
+Bundle-Version: 1.0.0
+Fragment-Host: es.itecban.deployment.environmentmanager;bundle-version="1.0.0"
+Export-Package: es.itecban.deployment.environmentmanager.manager.queryprovider.oracle
+

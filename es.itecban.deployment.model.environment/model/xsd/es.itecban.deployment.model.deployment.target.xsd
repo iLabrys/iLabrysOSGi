@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:dt="http://model.deployment.itecban.es/DeploymentTarget" xmlns:du="http://model.deployment.itecban.es/DeploymentUnit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://model.deployment.itecban.es/DeploymentTarget">
+    <xsd:import namespace="http://model.deployment.itecban.es/DeploymentUnit" schemaLocation="../../../es.itecban.deployment.model.software/model/xsd/es.itecban.deployment.model.deployment.unit.xsd"/>
+	<xsd:element name="domain" type="dt:DeploymentTargetType"/>
+	
+	<xsd:element name="node" type="dt:NodeType"/>
+	<xsd:element name="bridge" type="dt:BridgeType"/>
+	<xsd:element name="interconnect" type="dt:InterconnectType"/>
+	<xsd:element name="container" type="dt:ContainerType"/>
+	<xsd:element name="containerType" type="dt:ContainerTypeType"/>
+	<xsd:element name="supportedPackage" type="dt:SupportedPackageType"/>
+	<xsd:element name="runtimeUnit" type="dt:RuntimeUnitType"/>
+	<xsd:element name="runtimeResource" type="dt:RuntimeResourceType"/>
+	<xsd:element name="status" type="dt:StatusType"/>
+	
+	<xsd:complexType name="NodeType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A node's name is its unique identifier within
+						the deployment target
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="label" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A label is an optional human readable name.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="nodeResources">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="nodeResource" type="du:ResourceType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="nodeContainers">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="nodeContainer" type="dt:ContainerType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="nodeProperties">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="nodeProperty" type="du:PropertyType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SupportedPackageType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="version" type="xsd:string">
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="type" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						Type of package of this deployment unit. A
+						taxonomy of valid packaging formats is defined
+						in a external system.
+
+						For this version the supported packaging formats
+						are: es.itecban.packaging.jar,
+						es.itecban.packaging.osgi,
+						es.itecban.packaging.ear,
+						es.itecban.packaging.war,
+						es.itecban.packaging.rar,
+						es.itecban.packaging.zip,
+						es.itecban.packaging.sca
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="BridgeType">
+      <xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+			  <xsd:annotation>
+					<xsd:documentation>
+						A bridge's name is its unique identifier within the deployment
+						target
+					</xsd:documentation>
+				</xsd:annotation>
+			  </xsd:element>
+			<xsd:element minOccurs="0" name="label" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A lable is an optional human readable name.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			   <xsd:element maxOccurs="1" minOccurs="1" name="bridgeResources">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="bridgeResource" type="du:ResourceType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  </xsd:sequence>
+	  
+	</xsd:complexType>  
+	   <xsd:complexType name="InterconnectType">
+      <xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+			  <xsd:annotation>
+					<xsd:documentation>
+						An interconnect's name is its unique identifier within the deployment
+						target
+					</xsd:documentation>
+				</xsd:annotation>
+			  </xsd:element>
+			<xsd:element minOccurs="0" name="label" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A label is an optional human readable name.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="interconnectResources">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="interconnectResource" type="du:ResourceType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      			   <xsd:element maxOccurs="1" minOccurs="1" name="connectedNodes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="nodes" type="dt:NodeType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      			   <xsd:element maxOccurs="1" minOccurs="1" name="connectedBridges">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="bridge" type="dt:BridgeType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>                              															
+	  </xsd:sequence>
+	</xsd:complexType>
+	  
+    <xsd:complexType name="DeploymentTargetType">
+     <xsd:sequence>
+     	<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+     		<xsd:annotation>
+     			<xsd:documentation>
+     				A node's name is its unique identifier within the
+     				deployment target
+     			</xsd:documentation>
+     		</xsd:annotation>
+     	</xsd:element>
+     	<xsd:element minOccurs="0" name="UUID" type="xsd:string">
+     		<xsd:annotation>
+     			<xsd:documentation>
+     				An optional unique id for the deployment target
+     			</xsd:documentation>
+     		</xsd:annotation>
+     	</xsd:element>
+     	<xsd:element minOccurs="0" name="nodes">
+     		<xsd:complexType>
+     			<xsd:sequence>
+     				<xsd:element maxOccurs="unbounded" minOccurs="0" name="node" type="dt:NodeType"/>
+     			</xsd:sequence>
+     		</xsd:complexType>
+     	</xsd:element>
+     	<xsd:element minOccurs="0" name="bridges">
+     		<xsd:complexType>
+     			<xsd:sequence>
+     				<xsd:element maxOccurs="unbounded" minOccurs="0" name="bridge" type="dt:BridgeType"/>
+     			</xsd:sequence>
+     		</xsd:complexType>
+     	</xsd:element>
+     	<xsd:element minOccurs="0" name="interconnects">
+     		<xsd:complexType>
+     			<xsd:sequence>
+     				<xsd:element maxOccurs="unbounded" minOccurs="0" name="interconnect" type="dt:InterconnectType"/>
+     			</xsd:sequence>
+     		</xsd:complexType>
+     	</xsd:element>
+     	<xsd:element minOccurs="0" name="sharedResources">
+     		<xsd:complexType>
+     			<xsd:sequence>
+     				<xsd:element maxOccurs="unbounded" minOccurs="0" name="sharedResource" type="du:ResourceType"/>
+     			</xsd:sequence>
+     		</xsd:complexType>
+     	</xsd:element>
+     	<xsd:element maxOccurs="1" minOccurs="1" name="timestamp" type="xsd:dateTime"/>
+     </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContainerType">
+    	<xsd:sequence>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element minOccurs="1" name="containerTypes">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" name="containerType" type="dt:ContainerTypeType"/>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element minOccurs="1" name="supportedPackages">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="0" name="containerPackage" type="dt:SupportedPackageType"/>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="containerResources">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="0" name="containerResource" type="dt:RuntimeResourceType"/>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="containerProperties">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="0" name="containerProperty" type="du:PropertyType"/>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element minOccurs="0" name="runtimeUnits">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="0" name="unit" type="dt:RuntimeUnitType">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+      </xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+	<xsd:simpleType name="StatusType">
+    	<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ACTIVE"/>
+			<xsd:enumeration value="INACTIVE"/>
+			<xsd:enumeration value="INSTALLED"/>
+    	</xsd:restriction>
+    </xsd:simpleType>
+    
+    	<xsd:complexType name="RuntimeResourceType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="version" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						A version is a unique String resource attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="runtimeResourceTypes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="1" name="type" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="0" name="runtimeResourceProperties">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="resourceProperty" type="du:PropertyType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="status" type="dt:StatusType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+    
+
+    <xsd:complexType name="ContainerTypeType">
+    	<xsd:sequence>
+    		<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RuntimeUnitType">
+    	<xsd:sequence>
+    		<xsd:element minOccurs="1" name="name" type="xsd:string"/>
+    		<xsd:element minOccurs="0" name="version" type="xsd:string"/>
+    		<xsd:element minOccurs="1" name="status" type="dt:StatusType"/>
+    		<xsd:element minOccurs="0" name="runtimeResources">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element maxOccurs="unbounded" minOccurs="0" name="resource" type="dt:RuntimeResourceType">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+      </xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

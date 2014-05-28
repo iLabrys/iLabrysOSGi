@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://model.deployment.itecban.es/DeploymentUnit" 
+       class = "es.itecban.deployment.model.deployment.unit.UnitPackage"
+       genModel = "model/genmodel/es.itecban.model.deployment.target.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="unit" 
+       class="es.itecban.deployment.model.deployment.unit.util.UnitResourceFactoryImpl" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://model.deployment.itecban.es/DeploymentTarget" 
+       class = "es.itecban.deployment.model.deployment.target.TargetPackage"
+       genModel = "model/genmodel/es.itecban.model.deployment.target.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="target" 
+       class="es.itecban.deployment.model.deployment.target.util.TargetResourceFactoryImpl" />
+  </extension>
+
+</plugin>

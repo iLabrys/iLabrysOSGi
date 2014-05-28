@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Utils Plug-in
+Bundle-SymbolicName: es.itecban.deployment.utils
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: javax.servlet;version="2.5.0",
+ org.springframework.web.context,
+ org.springframework.web.context.support
+Require-Bundle: org.springframework.context.support;bundle-version="2.5.5",
+ org.springframework.beans;bundle-version="2.5.5",
+ org.springframework.context;bundle-version="2.5.5",
+ org.springframework.core;bundle-version="2.5.5"
+Export-Package: es.itecban.deployment.utils,
+ es.itecban.deployment.utils.beans

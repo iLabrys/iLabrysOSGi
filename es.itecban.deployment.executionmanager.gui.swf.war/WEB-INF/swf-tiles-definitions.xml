@@ -1,0 +1,112 @@
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+ <tiles-definitions>
+
+	<definition name="default" template="/WEB-INF/jsp/default/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/default/header.jsp"/>
+		<put-attribute name="buttons" value="/WEB-INF/jsp/default/buttons.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/jsp/default/menu.jsp"/>
+		<put-attribute name="home" value="/WEB-INF/jsp/default/home.jsp"/>
+		<put-attribute name="foot" value="/WEB-INF/jsp/default/foot.jsp"/>
+	</definition>
+	<!-- /Template -->
+	
+	<!-- Error -->
+	<definition name="error" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/error/error.jsp"/>
+	</definition>
+	<!-- /Error -->
+	
+	<definition name="createPlan" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/createPlan.jsp"/>
+	</definition>
+	
+	<definition name="environmentSelection" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/environmentSelection.jsp"/>
+	</definition>
+	
+	<definition name="pickDeploymentUnit" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/pickDeploymentUnit.jsp"/>
+	</definition>
+	
+	<definition name="pickTargetNodes" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/pickTargetNodes.jsp"/>
+	</definition>
+	
+	<definition name="pickTargetNodesold" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/pickTargetNodesold.jsp"/>
+	</definition>
+	
+	<definition name="resourceSelection" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/resourceSelection.jsp"/>
+	</definition>
+	
+	<definition name="confirmParameters" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/confirmParameters.jsp"/>
+	</definition>
+	
+	<definition name="planMapping" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/planMapping.jsp"/>
+	</definition>
+	
+	<definition name="planCreated" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/planCreated.jsp"/>
+	</definition>
+	
+	<definition name="launchPlan" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/launchPlan.jsp"/>
+	</definition>
+	
+	<definition name="errorWithLaunch" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/errorWithLaunch.jsp"/>
+	</definition>
+	
+	<definition name="planLaunched" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/planLaunched.jsp"/>
+	</definition>
+	
+	<definition name="endLaunch" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/endLaunch.jsp"/>
+	</definition>
+	
+	<definition name="underConstruction" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/underConstruction.jsp"/>
+	</definition>
+	
+	<definition name="findDeploymentUnitByName" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/findDeploymentUnitByName.jsp"/>
+	</definition>
+	
+	<definition name="findDeploymentUnitByResource" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/findDeploymentUnitByResource.jsp"/>
+	</definition>
+	
+	<definition name="planCreated" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/planCreated.jsp"/>
+	</definition>	
+	
+	<definition name="errorSavingPlan" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/errorSavingPlan.jsp"/>
+	</definition>
+	
+	<definition name="simplePlanSearch" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/simplePlanSearch.jsp"/>
+	</definition>
+	
+	<definition name="advancedPlanSearch" extends="default">
+		<!--<put-attribute name="home" value="/WEB-INF/jsp/advancedPlanSearch.jsp"/>-->
+		<put-attribute name="home" value="/WEB-INF/jsp/underConstruction.jsp"/>
+		
+	</definition>
+	
+	<definition name="planList" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/planList.jsp"/>
+	</definition>
+	
+	<definition name="showPlan" extends="default">
+		<put-attribute name="home" value="/WEB-INF/jsp/showPlan.jsp"/>
+	</definition>
+	
+</tiles-definitions>

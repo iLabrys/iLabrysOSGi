@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+
+	<osgi:service ref="environmentManager"
+		interface="es.itecban.deployment.environmentmanager.services.EnvironmentManager" />
+		
+	<osgi:service ref="environmentManager"
+		interface="es.itecban.deployment.environmentmanager.services.core.EnvironmentManagerCore"
+		ranking="1" />
+	
+	<!-- Configuration Manager and Configuration Provider -->
+	<osgi:service ref="configurationManager" interface="es.itecban.deployment.environmentmanager.services.ConfigurationManager"/>
+	<osgi:service ref="configurationProvider" interface="es.itecban.deployment.environmentmanager.services.ConfigurationProvider"/>
+
+	<!--<bean name="environmentManager"
+		class="es.itecban.deployment.environmentmanager.manager.EnvironmentManagerImpl"
+		init-method="initDB">
+		<property name="databaseManager" ref="databaseManager" />
+		<property name="portTM" value="1155" />
+		<property name="configurationProvider" ref="configurationProvider" />
+	</bean>-->
+		
+	
+	<!-- Exported OSGi service to be used by the utils bundle -->
+	<osgi:service ref="databaseManager" interface="es.itecban.deployment.environment.database.DatabaseManager"/>
+	
+	<bean name="databaseManager" class="es.itecban.deployment.environment.database.manager.DatabaseManagerImpl" init-method="initDB">
+  		<property name="propertiesResource" value="hibernate.properties"/>
+  		<property name="externalConfig" value="false"/>
+  		<property name="externalPropertiesURI" value="file:///D:/Temporal/environment/hibernate.properties"/>
+  	</bean>
+  	
+
+	<bean name="configurationManager" class="es.itecban.deployment.environment.configuration.manager.ConfigurationManagerImpl" init-method="initDB">
+  		<property name="databaseManager" ref="databaseManager" />
+  		<property name="configProv" ref="configurationProvider"/>
+  	</bean>
+  	
+  	<bean name="configurationProvider" class="es.itecban.deployment.environment.configuration.manager.ConfigurationProviderImpl" init-method="initDB">
+  		<property name="context" ref="bundleContext" />
+  		<property name="service" ref="databaseManager" />
+  	</bean>
+  	
+	<!-- EnvironmentManager -->  	
+  	
+	<bean name="environmentManager"
+		class="es.itecban.deployment.environmentmanager.manager.EnvironmentManagerImpl"
+		init-method="initDB">
+		<property name="databaseManager" ref="databaseManager" />
+		<property name="portTM" value="1155" />
+		<property name="configurationProvider" ref="configurationProvider" />
+		<property name="qp" ref="queryProvider" />
+
+	</bean>
+	
+	<!--           -->
+	<!-- DBCleaner -->
+	<!--           -->
+	
+	<osgi:service ref="dbCleaner"
+		interface="es.itecban.deployment.environmentmanager.services.DBCleaner" />
+	
+	<bean name="dbCleaner" class="es.itecban.deployment.environmentmanager.manager.DBCleanerImpl" init-method="init">
+  		<property name="databaseManager" ref="databaseManager" />
+ 	</bean>
+
+	
+</beans>

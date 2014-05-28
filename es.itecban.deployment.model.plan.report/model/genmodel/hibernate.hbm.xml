@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="report.ActivityResultKindTypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://model.deployment.itecban.es/DeploymentPlanReport</param>
+		<param name="edatatype">ActivityResultKindTypeObject</param>
+	</typedef>
+	<typedef name="report.PlanResultKindTypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://model.deployment.itecban.es/DeploymentPlanReport</param>
+		<param name="edatatype">PlanResultKindTypeObject</param>
+	</typedef>
+	<class name="es.itecban.deployment.model.deployment.plan.report.impl.ActivitiesExecutionReportTypeImpl" entity-name="ActivitiesExecutionReportType" abstract="false" lazy="false" discriminator-value="ActivitiesExecutionReportType" table="`activitiesexecutionreporttype`">
+		<meta attribute="eclassName">ActivitiesExecutionReportType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentPlanReport</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="activityExecutionReport" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="activitiesexecutionreporttype_activityexecutionreport">
+				<column name="`activitiesexecutionreporttype_activityexecutionreport_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`activitiesexecutionreporttype_activityexecutionreport_idx`"/>
+			<one-to-many entity-name="ActivityExecReportType"/>
+		</list>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.plan.report.impl.ActivityExecReportTypeImpl" entity-name="ActivityExecReportType" abstract="false" lazy="false" discriminator-value="ActivityExecReportType" table="`activityexecreporttype`">
+		<meta attribute="eclassName">ActivityExecReportType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentPlanReport</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="activityId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`activityid`"/>
+		</property>
+		<property name="startTime" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime">
+			<column not-null="true" unique="false" name="`starttime`"/>
+		</property>
+		<property name="endTime" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime">
+			<column not-null="true" unique="false" name="`endtime`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`description`"/>
+		</property>
+		<property name="resultCode" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`resultcode`"/>
+		</property>
+		<property name="result" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`result`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">es.itecban.deployment.model.deployment.plan.report.ActivityResultKindType</param>
+			</type>
+		</property>
+		<property name="technicalActivityExecReport" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`technicalactivityexecreport`"/>
+		</property>
+	</class>
+	<class name="es.itecban.deployment.model.deployment.plan.report.impl.ExecutionReportTypeImpl" entity-name="ExecutionReportType" abstract="false" lazy="false" discriminator-value="ExecutionReportType" table="`executionreporttype`">
+		<meta attribute="eclassName">ExecutionReportType</meta>
+		<meta attribute="epackage">http://model.deployment.itecban.es/DeploymentPlanReport</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="planId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`planid`"/>
+		</property>
+		<property name="startTime" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime">
+			<column not-null="true" unique="false" name="`starttime`"/>
+		</property>
+		<property name="endTime" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime">
+			<column not-null="true" unique="false" name="`endtime`"/>
+		</property>
+		<property name="creationUserId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`creationuserid`"/>
+		</property>
+		<property name="launcherUserId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`launcheruserid`"/>
+		</property>
+		<property name="environment" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`environment`"/>
+		</property>
+		<property name="technicalExecutionReport" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`technicalexecutionreport`"/>
+		</property>
+		<property name="result" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`result`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">es.itecban.deployment.model.deployment.plan.report.PlanResultKindType</param>
+			</type>
+		</property>
+		<property name="message" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`message`"/>
+		</property>
+		<many-to-one name="activitiesExecutionReport" entity-name="ActivitiesExecutionReportType" cascade="all" foreign-key="executionreporttype_activitiesexecutionreport" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`activitiesexecutionreporttype_activitiesexecutionreport_e_id`"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://model.deployment.itecban.es/ValidationResult"
+            class="es.itecban.deployment.model.validation.result.ResultPackage"
+            genModel="model/genmodel/es.itecban.deployment.model.validation.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="result"
+            class="es.itecban.deployment.model.validation.result.util.ResultResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

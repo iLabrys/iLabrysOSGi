@@ -1,0 +1,12 @@
+es.itecban.deployment.packaging.jar= Generic JAR Package  
+es.itecban.deployment.packaging.osgi= OSGi Bundle 
+es.itecban.deployment.packaging.ear= Enterprise Application Archive (EAR) 
+es.itecban.deployment.packaging.war= Web Application Archive (WAR) 
+es.itecban.deployment.packaging.rar= RAR-compressed file 
+es.itecban.deployment.packaging.zip= ZIP-compressed file 
+es.itecban.deployment.packaging.sca= SCA Assembly 
+es.itecban.deployment.packaging.sql= Data SQL Package 
+es.itecban.deployment.packaging.hbm.xml= Hibernate-based Package 
+es.itecban.deployment.packaging.jar.oracle.bpelpm= ORACLE BPM-based Package 
+es.itecban.deployment.packaging.jbi= JBI Assembly 
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://model.deployment.itecban.es/DeploymentPlan" 
+       class = "es.itecban.deployment.model.deployment.plan.PlanPackage"
+       genModel = "model/genmodel/es.upm.dit.model.deployment.plan.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="plan" 
+       class="es.itecban.deployment.model.deployment.plan.util.PlanResourceFactoryImpl" />
+  </extension>
+
+</plugin>

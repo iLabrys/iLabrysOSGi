@@ -1,0 +1,5 @@
+es.itecban.deployment.system.os= Operating System 
+es.itecban.deployment.system.memory= Memory 
+es.itecban.deployment.system.usb= USB 
+es.itecban.deployment.system.pci= PCI 
+es.itecban.deployment.system.hd= Hard Disk 

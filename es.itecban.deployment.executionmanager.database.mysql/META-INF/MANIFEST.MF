@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Mysql
+Bundle-SymbolicName: es.itecban.deployment.executionmanager.database.mysql
+Bundle-Version: 1.0.0
+Bundle-Vendor: ITECBAN
+Fragment-Host: es.itecban.deployment.executionmanager.manager;bundle-version="1.0.0"
+Export-Package: es.itecban.deployment.executionmanager.queryprovider.mysql

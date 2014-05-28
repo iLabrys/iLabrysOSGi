@@ -1,0 +1,5 @@
+es.itecban.deployment.process.bpel= Generic BPEL Process 
+es.itecban.deployment.process.jpdl= JBoss JBPM Process 
+es.itecban.deployment.process= ITECBAN Process 
+es.itecban.deployment.process.subprocess= ITECBAN Subprocess
+es.itecban.deployment.process.lightprocess= ITECBAN Light Process

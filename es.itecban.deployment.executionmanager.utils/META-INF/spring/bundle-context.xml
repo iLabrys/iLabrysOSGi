@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+ 	<osgi:reference id="planManager"
+		interface="es.itecban.deployment.executionmanager.services.PlanManager" />
+
+  	<!--<bean name="executionManagerUtils" class="es.itecban.deployment.executionmanager.bbdd.utils.ExecutionManagerUtils" init-method="addDefaultPlan">
+  		<property name="service" ref="planManager" />
+  		<property name="plan" value="plan.plan" />
+  	</bean>-->
+  	
+  	<!-- To do the database migration -->
+  	<!--<bean name="dbMigrator" class="es.itecban.deployment.executionmanager.bbdd.utils.DBMigrator" init-method="extractData">-->
+  	<bean name="dbMigrator" class="es.itecban.deployment.executionmanager.bbdd.utils.DBMigrator" init-method="storeData">
+  		<property name="planManager" ref="planManager" />
+  		<property name="pathToData" value="./migrationData" />
+  	</bean>
+  	
+</beans>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.itecban.deployment.model.plan/src"
+    modelPluginID="es.itecban.deployment.model.plan" modelName="Es.itecban.deployment.model.deployment"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>../xsd/es.itecban.deployment.model.deployment.plan.xsd</foreignModel>
+  <genPackages prefix="Plan" basePackage="es.itecban.deployment.model.deployment"
+      resource="XML" disposableProviderFactory="true" ecorePackage="plan.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="plan.ecore#//ActivityKindType">
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/INSTALLDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/UPDATEDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/CONFIGUREDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/UNINSTALLDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/STARTDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/STOPDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/ADDCONTAINERRESOURCE"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/REMOVECONTAINERRESOURCE"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/CONFIGURECONTAINERRESOURCE"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/CONFIGURECONTAINERPROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ActivityKindType/CONFIGUREUNITRESOURCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="plan.ecore#//ConfigurationActivityKindType">
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ConfigurationActivityKindType/CONFIGURECONTAINERRESOURCE"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ConfigurationActivityKindType/CONFIGURECONTAINERPROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ConfigurationActivityKindType/CONFIGUREUNITRESOURCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="plan.ecore#//DeploymentActivityKindType">
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//DeploymentActivityKindType/INSTALLDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//DeploymentActivityKindType/UPDATEDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//DeploymentActivityKindType/UNINSTALLDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//DeploymentActivityKindType/STARTDEPLOYMENTUNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//DeploymentActivityKindType/STOPDEPLOYMENTUNIT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="plan.ecore#//ResourceActivityKindType">
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ResourceActivityKindType/ADDCONTAINERRESOURCE"/>
+      <genEnumLiterals ecoreEnumLiteral="plan.ecore#//ResourceActivityKindType/REMOVECONTAINERRESOURCE"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="plan.ecore#//ActivityKindTypeObject"/>
+    <genDataTypes ecoreDataType="plan.ecore#//ConfigurationActivityKindTypeObject"/>
+    <genDataTypes ecoreDataType="plan.ecore#//DeploymentActivityKindTypeObject"/>
+    <genDataTypes ecoreDataType="plan.ecore#//ResourceActivityKindTypeObject"/>
+    <genClasses ecoreClass="plan.ecore#//ActivitiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ActivitiesType/activity"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="plan.ecore#//ActivityType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ActivityType/activityId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ActivityType/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ActivityType/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ConfigurationActivityType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ConfigurationActivityType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ConfigurationActivityType/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ConfigurationPropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ConfigurationPropertiesType/configurationProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ConfigurationType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ConfigurationType/property"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//DeploymentActivityType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentActivityType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentActivityType/unitName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentActivityType/unitVersion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DeploymentActivityType/initialConfiguration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentActivityType/previousUnitName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentActivityType/previousUnitVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//DeploymentPlanType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentPlanType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentPlanType/environment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DeploymentPlanType/activities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DeploymentPlanType/scheduleData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DeploymentPlanType/planStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference plan.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference plan.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DocumentRoot/activity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DocumentRoot/plan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//DocumentRoot/schedule"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//InitialConfigurationType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//InitialConfigurationType/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ResourceActivityType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ResourceActivityType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ResourceActivityType/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ResourceConfigurationType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ResourceConfigurationType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plan.ecore#//ResourceConfigurationType/configurationProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="plan.ecore#//ScheduleType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ScheduleType/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ScheduleType/scheduledLaunchDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plan.ecore#//ScheduleType/lastModificationDate"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Unit" basePackage="es.itecban.deployment.model.deployment"
+      resource="XML" disposableProviderFactory="true" ecorePackage="unit.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="unit.ecore#//LocalityConstraintType">
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//LocalityConstraintType/SAMENODE"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//LocalityConstraintType/SAMENODESAMEPROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//LocalityConstraintType/ANYNODE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="unit.ecore#//PropertyKindType">
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/QUANTITY"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/CAPACITY"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/MINIMUM"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/MAXIMUM"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/ATTRIBUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="unit.ecore#//PropertyKindType/SELECTION"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="unit.ecore#//LocalityConstraintTypeObject"/>
+    <genDataTypes ecoreDataType="unit.ecore#//PropertyKindTypeObject"/>
+    <genClasses ecoreClass="unit.ecore#//ConstraintsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//ConstraintsType/constraint"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//DependenciesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DependenciesType/dependencyExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DependenciesType/dependency"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//DependencyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DependencyType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DependencyType/locality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DependencyType/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DependencyType/requiredResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DependencyType/requiredPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//DeploymentUnitType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DeploymentUnitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DeploymentUnitType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DeploymentUnitType/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/exportedResources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DeploymentUnitType/unitRepositories"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//ExportedResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//ExportedResourcesType/exportedResource"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//PackageType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//PackageType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//PackageType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//PackageType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//PropertyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//PropertyType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//PropertyType/value"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//ProviderType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//ProviderType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//ProviderType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//ProviderType/homeUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//RequiredResourcePropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//RequiredResourcePropertiesType/property"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//RequiredResourcePropertyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourcePropertyType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourcePropertyType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourcePropertyType/kind"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//RequiredResourceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourceType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourceType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//RequiredResourceType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//RequiredResourceType/requiredResourceProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//ResourcePropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//ResourcePropertiesType/resourceProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//ResourceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//ResourceType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//ResourceType/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//ResourceType/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//ResourceType/resourceProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//TypesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//TypesType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/dependency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/deploymentUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DocumentRoot/localityConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//DocumentRoot/propertyKind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/requiredResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/requiredResourceProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference unit.ecore#//DocumentRoot/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="unit.ecore#//UnitRepositoriesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute unit.ecore#//UnitRepositoriesType/repository"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Target" basePackage="es.itecban.deployment.model.deployment"
+      resource="XML" disposableProviderFactory="true" ecorePackage="target.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="target.ecore#//StatusType">
+      <genEnumLiterals ecoreEnumLiteral="target.ecore#//StatusType/ACTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="target.ecore#//StatusType/INACTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="target.ecore#//StatusType/INSTALLED"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="target.ecore#//StatusTypeObject"/>
+    <genClasses ecoreClass="target.ecore#//BridgeResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//BridgeResourcesType/bridgeResource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//BridgesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//BridgesType/bridge"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//BridgeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//BridgeType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//BridgeType/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//BridgeType/bridgeResources"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ConnectedBridgesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ConnectedBridgesType/bridge"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ConnectedNodesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ConnectedNodesType/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ContainerPropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerPropertiesType/containerProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ContainerResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerResourcesType/containerResource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ContainerType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//ContainerType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerType/containerTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerType/supportedPackages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerType/containerResources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerType/containerProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerType/runtimeUnits"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ContainerTypesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//ContainerTypesType/containerType"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//ContainerTypeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//ContainerTypeType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//ContainerTypeType/version"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//DeploymentTargetType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//DeploymentTargetType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//DeploymentTargetType/uUID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DeploymentTargetType/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DeploymentTargetType/bridges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DeploymentTargetType/interconnects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DeploymentTargetType/sharedResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//DeploymentTargetType/timestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/bridge"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/containerType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/domain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/interconnect"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/runtimeResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/runtimeUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//DocumentRoot/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//DocumentRoot/supportedPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//InterconnectResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//InterconnectResourcesType/interconnectResource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//InterconnectsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//InterconnectsType/interconnect"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//InterconnectType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//InterconnectType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//InterconnectType/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//InterconnectType/interconnectResources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//InterconnectType/connectedNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//InterconnectType/connectedBridges"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//NodeContainersType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodeContainersType/nodeContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//NodePropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodePropertiesType/nodeProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//NodeResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodeResourcesType/nodeResource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//NodesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodesType/node"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//NodeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//NodeType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//NodeType/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodeType/nodeResources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodeType/nodeContainers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//NodeType/nodeProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeResourcePropertiesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeResourcePropertiesType/resourceProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeResourcesType/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeResourceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeResourceType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeResourceType/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeResourceType/runtimeResourceTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeResourceType/runtimeResourceProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeResourceType/status"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeResourceTypesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeResourceTypesType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeUnitsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeUnitsType/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//RuntimeUnitType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeUnitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeUnitType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//RuntimeUnitType/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//RuntimeUnitType/runtimeResources"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//SharedResourcesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//SharedResourcesType/sharedResource"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//SupportedPackagesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference target.ecore#//SupportedPackagesType/containerPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="target.ecore#//SupportedPackageType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//SupportedPackageType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute target.ecore#//SupportedPackageType/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
